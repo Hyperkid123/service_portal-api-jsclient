@@ -6,16 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addPortfolio**](AdminsApi.md#addPortfolio) | **POST** /portfolios | API to add a new portfolio
 [**addPortfolioItem**](AdminsApi.md#addPortfolioItem) | **POST** /portfolio_items | API to add a new portfolio item
-[**addPortfolioItemToPortfolio**](AdminsApi.md#addPortfolioItemToPortfolio) | **POST** /portfolios/{portfolio_id}/portfolio_items/{portfolio_item_id} | Add Portfolio item to a portfolio
-[**addProvider**](AdminsApi.md#addProvider) | **POST** /providers | Temporary API to add a new provider
+[**addPortfolioItemToPortfolio**](AdminsApi.md#addPortfolioItemToPortfolio) | **POST** /portfolios/{portfolio_id}/portfolio_items | Add Portfolio item to a portfolio
 [**addToOrder**](AdminsApi.md#addToOrder) | **POST** /orders/{order_id}/items | Add a Portfolio Item to the Order in Pending State
-[**catalogItems**](AdminsApi.md#catalogItems) | **GET** /catalog_items | fetches catalog items from all providers
-[**catalogPlanParameters**](AdminsApi.md#catalogPlanParameters) | **GET** /providers/{provider_id}/catalog_items/{catalog_id}/plans/{plan_id}/parameters | Fetches catalog parameters, it needs the provider id, the catalog_id and the plan_id
-[**catalogPlanSchema**](AdminsApi.md#catalogPlanSchema) | **GET** /providers/{provider_id}/catalog_items/{catalog_id}/plans/{plan_id}/json_schema | Fetches catalog json schema, it needs the provider id, the catalog_id and the plan_id
-[**fetchCatalogItemWithProvider**](AdminsApi.md#fetchCatalogItemWithProvider) | **GET** /providers/{provider_id}/catalog_items | Fetch all or a specific catalog item from a specific provider
-[**fetchCatalogItemWithProviderAndCatalogID**](AdminsApi.md#fetchCatalogItemWithProviderAndCatalogID) | **GET** /providers/{provider_id}/catalog_items/{catalog_id} | Fetches a specific catalog item for a provider
 [**fetchPlansWithPortfolioItemId**](AdminsApi.md#fetchPlansWithPortfolioItemId) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item
-[**fetchPlansWithProviderAndCatalogID**](AdminsApi.md#fetchPlansWithProviderAndCatalogID) | **GET** /providers/{provider_id}/catalog_items/{catalog_id}/plans | Fetches all the plans for a specific catalog item for a provider
 [**fetchPortfolioItemFromPortfolio**](AdminsApi.md#fetchPortfolioItemFromPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items/{portfolio_item_id} | Fetch a portfolio item from a specific portfolio
 [**fetchPortfolioItemsWithPortfolio**](AdminsApi.md#fetchPortfolioItemsWithPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items | Fetch all portfolio items from a specific portfolio
 [**fetchPortfolioWithId**](AdminsApi.md#fetchPortfolioWithId) | **GET** /portfolios/{portfolio_id} | Fetch a specific Portfolio
@@ -25,7 +18,6 @@ Method | HTTP request | Description
 [**listPortfolioItems**](AdminsApi.md#listPortfolioItems) | **GET** /portfolio_items | API to list portfolio_items
 [**listPortfolios**](AdminsApi.md#listPortfolios) | **GET** /portfolios | API to list portfolios
 [**listProgressMessages**](AdminsApi.md#listProgressMessages) | **GET** /order_items/{order_item_id}/progress_messages | Get a list of progress messages in an item
-[**listProviders**](AdminsApi.md#listProviders) | **GET** /providers | Temporary API to list provider
 [**newOrder**](AdminsApi.md#newOrder) | **POST** /orders | Create a new order
 [**submitOrder**](AdminsApi.md#submitOrder) | **POST** /orders/{order_id} | Submit the given order
 
@@ -109,7 +101,7 @@ UserSecurity.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
 
-let body = new ServicePortalApi.PortfolioItem(); // PortfolioItem | 
+let body = new ServicePortalApi.CreatePortfolioItem(); // CreatePortfolioItem | 
 
 apiInstance.addPortfolioItem(body).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -123,7 +115,7 @@ apiInstance.addPortfolioItem(body).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**PortfolioItem**](PortfolioItem.md)|  | 
+ **body** | [**CreatePortfolioItem**](CreatePortfolioItem.md)|  | 
 
 ### Return type
 
@@ -140,7 +132,7 @@ Name | Type | Description  | Notes
 
 <a name="addPortfolioItemToPortfolio"></a>
 # **addPortfolioItemToPortfolio**
-> addPortfolioItemToPortfolio(portfolioId, portfolioItemId)
+> addPortfolioItemToPortfolio(portfolioId, body)
 
 Add Portfolio item to a portfolio
 
@@ -165,9 +157,9 @@ let apiInstance = new ServicePortalApi.AdminsApi();
 
 let portfolioId = "portfolioId_example"; // String | The Portfolio ID
 
-let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
+let body = new ServicePortalApi.AddPortfolioItem(); // AddPortfolioItem | 
 
-apiInstance.addPortfolioItemToPortfolio(portfolioId, portfolioItemId).then(() => {
+apiInstance.addPortfolioItemToPortfolio(portfolioId, body).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -180,65 +172,11 @@ apiInstance.addPortfolioItemToPortfolio(portfolioId, portfolioItemId).then(() =>
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **portfolioId** | **String**| The Portfolio ID | 
- **portfolioItemId** | **String**| The Portfolio Item ID | 
+ **body** | [**AddPortfolioItem**](AddPortfolioItem.md)|  | 
 
 ### Return type
 
 null (empty response body)
-
-### Authorization
-
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="addProvider"></a>
-# **addProvider**
-> Object addProvider(body)
-
-Temporary API to add a new provider
-
-Returns the added provider object 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
-
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-
-let body = new ServicePortalApi.Provider(); // Provider | 
-
-apiInstance.addProvider(body).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**Provider**](Provider.md)|  | 
-
-### Return type
-
-**Object**
 
 ### Authorization
 
@@ -306,298 +244,6 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="catalogItems"></a>
-# **catalogItems**
-> [CatalogItem] catalogItems(opts)
-
-fetches catalog items from all providers
-
-Fetch catalog item from all defined providers 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
-
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-
-let opts = { 
-  'limit': 56, // Number | How many catalog items to return at one time (max 1000)
-  'offset': 0 // Number | Starting Offset
-};
-apiInstance.catalogItems(opts).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **Number**| How many catalog items to return at one time (max 1000) | [optional] 
- **offset** | **Number**| Starting Offset | [optional] [default to 0]
-
-### Return type
-
-[**[CatalogItem]**](CatalogItem.md)
-
-### Authorization
-
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="catalogPlanParameters"></a>
-# **catalogPlanParameters**
-> [PlanParameter] catalogPlanParameters(providerId, catalogId, planId)
-
-Fetches catalog parameters, it needs the provider id, the catalog_id and the plan_id
-
-Return a JSON object with the parameters needed for a specific plan of a catalog item 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
-
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-
-let providerId = "providerId_example"; // String | The Provider ID
-
-let catalogId = "catalogId_example"; // String | The Catalog ID
-
-let planId = "planId_example"; // String | The Plan ID
-
-apiInstance.catalogPlanParameters(providerId, catalogId, planId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **providerId** | [**String**](.md)| The Provider ID | 
- **catalogId** | [**String**](.md)| The Catalog ID | 
- **planId** | **String**| The Plan ID | 
-
-### Return type
-
-[**[PlanParameter]**](PlanParameter.md)
-
-### Authorization
-
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="catalogPlanSchema"></a>
-# **catalogPlanSchema**
-> JSONSchema catalogPlanSchema(providerId, catalogId, planId)
-
-Fetches catalog json schema, it needs the provider id, the catalog_id and the plan_id
-
-Return a JSON schema with the parameters needed for a specific plan of a catalog item 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
-
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-
-let providerId = "providerId_example"; // String | The Provider ID
-
-let catalogId = "catalogId_example"; // String | The Catalog ID
-
-let planId = "planId_example"; // String | The Plan ID
-
-apiInstance.catalogPlanSchema(providerId, catalogId, planId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **providerId** | [**String**](.md)| The Provider ID | 
- **catalogId** | [**String**](.md)| The Catalog ID | 
- **planId** | **String**| The Plan ID | 
-
-### Return type
-
-[**JSONSchema**](JSONSchema.md)
-
-### Authorization
-
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="fetchCatalogItemWithProvider"></a>
-# **fetchCatalogItemWithProvider**
-> [CatalogItem] fetchCatalogItemWithProvider(providerId, , opts)
-
-Fetch all or a specific catalog item from a specific provider
-
-By passing in the provider id you can fetch all the catalog items in the provider. You can limit to a specific catalog item by passing its id 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
-
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-
-let providerId = "providerId_example"; // String | The Provider ID
-
-let opts = { 
-  'catalogId': "catalogId_example" // String | The Catalog ID
-};
-apiInstance.fetchCatalogItemWithProvider(providerId, , opts).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **providerId** | [**String**](.md)| The Provider ID | 
- **catalogId** | [**String**](.md)| The Catalog ID | [optional] 
-
-### Return type
-
-[**[CatalogItem]**](CatalogItem.md)
-
-### Authorization
-
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="fetchCatalogItemWithProviderAndCatalogID"></a>
-# **fetchCatalogItemWithProviderAndCatalogID**
-> [CatalogItem] fetchCatalogItemWithProviderAndCatalogID(providerId, catalogId, )
-
-Fetches a specific catalog item for a provider
-
-Fetch a catalog item by its ID and provider ID 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
-
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-
-let providerId = "providerId_example"; // String | The Provider ID
-
-let catalogId = "catalogId_example"; // String | The Catalog ID
-
-apiInstance.fetchCatalogItemWithProviderAndCatalogID(providerId, catalogId, ).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **providerId** | [**String**](.md)| The Provider ID | 
- **catalogId** | [**String**](.md)| The Catalog ID | 
-
-### Return type
-
-[**[CatalogItem]**](CatalogItem.md)
-
-### Authorization
-
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
 <a name="fetchPlansWithPortfolioItemId"></a>
 # **fetchPlansWithPortfolioItemId**
 > [ServicePlan] fetchPlansWithPortfolioItemId(portfolioItemId)
@@ -642,63 +288,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[ServicePlan]**](ServicePlan.md)
-
-### Authorization
-
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="fetchPlansWithProviderAndCatalogID"></a>
-# **fetchPlansWithProviderAndCatalogID**
-> [CatalogPlan] fetchPlansWithProviderAndCatalogID(providerId, catalogId, )
-
-Fetches all the plans for a specific catalog item for a provider
-
-Fetch all plans for catalog item by its ID and provider ID 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
-
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-
-let providerId = "providerId_example"; // String | The Provider ID
-
-let catalogId = "catalogId_example"; // String | The Catalog ID
-
-apiInstance.fetchPlansWithProviderAndCatalogID(providerId, catalogId, ).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **providerId** | [**String**](.md)| The Provider ID | 
- **catalogId** | [**String**](.md)| The Catalog ID | 
-
-### Return type
-
-[**[CatalogPlan]**](CatalogPlan.md)
 
 ### Authorization
 
@@ -1181,54 +770,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="listProviders"></a>
-# **listProviders**
-> [Provider] listProviders()
-
-Temporary API to list provider
-
-Returns an array of provider objects 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
-
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-apiInstance.listProviders().then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**[Provider]**](Provider.md)
-
-### Authorization
-
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="newOrder"></a>

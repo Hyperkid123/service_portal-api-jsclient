@@ -19,14 +19,14 @@ import ApiClient from '../ApiClient';
 
 
 /**
-* The JSONSchema model module.
-* @module model/JSONSchema
+* The CreatePortfolioItem model module.
+* @module model/CreatePortfolioItem
 * @version 1.0.0
 */
-export default class JSONSchema {
+export default class CreatePortfolioItem {
     /**
-    * Constructs a new <code>JSONSchema</code>.
-    * @alias module:model/JSONSchema
+    * Constructs a new <code>CreatePortfolioItem</code>.
+    * @alias module:model/CreatePortfolioItem
     * @class
     */
 
@@ -42,31 +42,31 @@ export default class JSONSchema {
     }
 
     /**
-    * Constructs a <code>JSONSchema</code> from a plain JavaScript object, optionally creating a new instance.
+    * Constructs a <code>CreatePortfolioItem</code> from a plain JavaScript object, optionally creating a new instance.
     * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
     * @param {Object} data The plain JavaScript object bearing properties of interest.
-    * @param {module:model/JSONSchema} obj Optional instance to populate.
-    * @return {module:model/JSONSchema} The populated <code>JSONSchema</code> instance.
+    * @param {module:model/CreatePortfolioItem} obj Optional instance to populate.
+    * @return {module:model/CreatePortfolioItem} The populated <code>CreatePortfolioItem</code> instance.
     */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new JSONSchema();
+            obj = obj || new CreatePortfolioItem();
 
             
             
             
 
-            if (data.hasOwnProperty('schema')) {
-                obj['schema'] = ApiClient.convertToType(data['schema'], Object);
+            if (data.hasOwnProperty('service_offering_ref')) {
+                obj['service_offering_ref'] = ApiClient.convertToType(data['service_offering_ref'], 'String');
             }
         }
         return obj;
     }
 
     /**
-    * @member {Object} schema
+    * @member {String} service_offering_ref
     */
-    schema = undefined;
+    service_offering_ref = undefined;
 
 
 

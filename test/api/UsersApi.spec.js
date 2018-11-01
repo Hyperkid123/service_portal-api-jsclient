@@ -58,70 +58,10 @@
         done();
       });
     });
-    describe('catalogItems', function() {
-      it('should call catalogItems successfully', function(done) {
-        //uncomment below and update the code to test catalogItems
-        //instance.catalogItems(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('catalogPlanParameters', function() {
-      it('should call catalogPlanParameters successfully', function(done) {
-        //uncomment below and update the code to test catalogPlanParameters
-        //instance.catalogPlanParameters(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('catalogPlanSchema', function() {
-      it('should call catalogPlanSchema successfully', function(done) {
-        //uncomment below and update the code to test catalogPlanSchema
-        //instance.catalogPlanSchema(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('fetchCatalogItemWithProvider', function() {
-      it('should call fetchCatalogItemWithProvider successfully', function(done) {
-        //uncomment below and update the code to test fetchCatalogItemWithProvider
-        //instance.fetchCatalogItemWithProvider(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('fetchCatalogItemWithProviderAndCatalogID', function() {
-      it('should call fetchCatalogItemWithProviderAndCatalogID successfully', function(done) {
-        //uncomment below and update the code to test fetchCatalogItemWithProviderAndCatalogID
-        //instance.fetchCatalogItemWithProviderAndCatalogID(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
     describe('fetchPlansWithPortfolioItemId', function() {
       it('should call fetchPlansWithPortfolioItemId successfully', function(done) {
         //uncomment below and update the code to test fetchPlansWithPortfolioItemId
         //instance.fetchPlansWithPortfolioItemId(function(error) {
-        //  if (error) throw error;
-        //expect().to.be();
-        //});
-        done();
-      });
-    });
-    describe('fetchPlansWithProviderAndCatalogID', function() {
-      it('should call fetchPlansWithProviderAndCatalogID successfully', function(done) {
-        //uncomment below and update the code to test fetchPlansWithProviderAndCatalogID
-        //instance.fetchPlansWithProviderAndCatalogID(function(error) {
         //  if (error) throw error;
         //expect().to.be();
         //});

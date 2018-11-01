@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new ServicePortalApi.ParameterValue();
+    instance = new ServicePortalApi.CreatePortfolioItem();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,34 +47,16 @@
       object[property] = value;
   }
 
-  describe('ParameterValue', function() {
-    it('should create an instance of ParameterValue', function() {
-      // uncomment below and update the code to test ParameterValue
-      //var instane = new ServicePortalApi.ParameterValue();
-      //expect(instance).to.be.a(ServicePortalApi.ParameterValue);
+  describe('CreatePortfolioItem', function() {
+    it('should create an instance of CreatePortfolioItem', function() {
+      // uncomment below and update the code to test CreatePortfolioItem
+      //var instane = new ServicePortalApi.CreatePortfolioItem();
+      //expect(instance).to.be.a(ServicePortalApi.CreatePortfolioItem);
     });
 
-    it('should have the property name (base name: "name")', function() {
-      // uncomment below and update the code to test the property name
-      //var instane = new ServicePortalApi.ParameterValue();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property value (base name: "value")', function() {
-      // uncomment below and update the code to test the property value
-      //var instane = new ServicePortalApi.ParameterValue();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property type (base name: "type")', function() {
-      // uncomment below and update the code to test the property type
-      //var instane = new ServicePortalApi.ParameterValue();
-      //expect(instance).to.be();
-    });
-
-    it('should have the property format (base name: "format")', function() {
-      // uncomment below and update the code to test the property format
-      //var instane = new ServicePortalApi.ParameterValue();
+    it('should have the property serviceOfferingRef (base name: "service_offering_ref")', function() {
+      // uncomment below and update the code to test the property serviceOfferingRef
+      //var instane = new ServicePortalApi.CreatePortfolioItem();
       //expect(instance).to.be();
     });
 

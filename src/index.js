@@ -13,18 +13,14 @@
 
 
 import ApiClient from './ApiClient';
-import CatalogItem from './model/CatalogItem';
-import CatalogPlan from './model/CatalogPlan';
-import JSONSchema from './model/JSONSchema';
+import AddPortfolioItem from './model/AddPortfolioItem';
+import CreatePortfolioItem from './model/CreatePortfolioItem';
 import Order from './model/Order';
 import OrderItem from './model/OrderItem';
 import Organization from './model/Organization';
-import ParameterValue from './model/ParameterValue';
-import PlanParameter from './model/PlanParameter';
 import Portfolio from './model/Portfolio';
 import PortfolioItem from './model/PortfolioItem';
 import ProgressMessage from './model/ProgressMessage';
-import Provider from './model/Provider';
 import ServicePlan from './model/ServicePlan';
 import AdminsApi from './api/AdminsApi';
 import UsersApi from './api/UsersApi';
@@ -69,22 +65,16 @@ export {
     ApiClient,
 
     /**
-     * The CatalogItem model constructor.
-     * @property {module:model/CatalogItem}
+     * The AddPortfolioItem model constructor.
+     * @property {module:model/AddPortfolioItem}
      */
-    CatalogItem,
+    AddPortfolioItem,
 
     /**
-     * The CatalogPlan model constructor.
-     * @property {module:model/CatalogPlan}
+     * The CreatePortfolioItem model constructor.
+     * @property {module:model/CreatePortfolioItem}
      */
-    CatalogPlan,
-
-    /**
-     * The JSONSchema model constructor.
-     * @property {module:model/JSONSchema}
-     */
-    JSONSchema,
+    CreatePortfolioItem,
 
     /**
      * The Order model constructor.
@@ -105,18 +95,6 @@ export {
     Organization,
 
     /**
-     * The ParameterValue model constructor.
-     * @property {module:model/ParameterValue}
-     */
-    ParameterValue,
-
-    /**
-     * The PlanParameter model constructor.
-     * @property {module:model/PlanParameter}
-     */
-    PlanParameter,
-
-    /**
      * The Portfolio model constructor.
      * @property {module:model/Portfolio}
      */
@@ -133,12 +111,6 @@ export {
      * @property {module:model/ProgressMessage}
      */
     ProgressMessage,
-
-    /**
-     * The Provider model constructor.
-     * @property {module:model/Provider}
-     */
-    Provider,
 
     /**
      * The ServicePlan model constructor.

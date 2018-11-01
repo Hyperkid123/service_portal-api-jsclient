@@ -28,7 +28,7 @@
   var instance;
 
   beforeEach(function() {
-    instance = new ServicePortalApi.JSONSchema();
+    instance = new ServicePortalApi.AddPortfolioItem();
   });
 
   var getProperty = function(object, getter, property) {
@@ -47,16 +47,16 @@
       object[property] = value;
   }
 
-  describe('JSONSchema', function() {
-    it('should create an instance of JSONSchema', function() {
-      // uncomment below and update the code to test JSONSchema
-      //var instane = new ServicePortalApi.JSONSchema();
-      //expect(instance).to.be.a(ServicePortalApi.JSONSchema);
+  describe('AddPortfolioItem', function() {
+    it('should create an instance of AddPortfolioItem', function() {
+      // uncomment below and update the code to test AddPortfolioItem
+      //var instane = new ServicePortalApi.AddPortfolioItem();
+      //expect(instance).to.be.a(ServicePortalApi.AddPortfolioItem);
     });
 
-    it('should have the property schema (base name: "schema")', function() {
-      // uncomment below and update the code to test the property schema
-      //var instane = new ServicePortalApi.JSONSchema();
+    it('should have the property portfolioItemId (base name: "portfolio_item_id")', function() {
+      // uncomment below and update the code to test the property portfolioItemId
+      //var instane = new ServicePortalApi.AddPortfolioItem();
       //expect(instance).to.be();
     });
 

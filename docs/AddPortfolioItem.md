@@ -1,8 +1,8 @@
-# ServicePortalApi.JSONSchema
+# ServicePortalApi.AddPortfolioItem
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**schema** | **Object** |  | [optional] 
+**portfolioItemId** | **String** |  | [optional] 
 
 

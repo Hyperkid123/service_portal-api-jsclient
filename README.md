@@ -103,16 +103,9 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ServicePortalApi.AdminsApi* | [**addPortfolio**](docs/AdminsApi.md#addPortfolio) | **POST** /portfolios | API to add a new portfolio
 *ServicePortalApi.AdminsApi* | [**addPortfolioItem**](docs/AdminsApi.md#addPortfolioItem) | **POST** /portfolio_items | API to add a new portfolio item
-*ServicePortalApi.AdminsApi* | [**addPortfolioItemToPortfolio**](docs/AdminsApi.md#addPortfolioItemToPortfolio) | **POST** /portfolios/{portfolio_id}/portfolio_items/{portfolio_item_id} | Add Portfolio item to a portfolio
-*ServicePortalApi.AdminsApi* | [**addProvider**](docs/AdminsApi.md#addProvider) | **POST** /providers | Temporary API to add a new provider
+*ServicePortalApi.AdminsApi* | [**addPortfolioItemToPortfolio**](docs/AdminsApi.md#addPortfolioItemToPortfolio) | **POST** /portfolios/{portfolio_id}/portfolio_items | Add Portfolio item to a portfolio
 *ServicePortalApi.AdminsApi* | [**addToOrder**](docs/AdminsApi.md#addToOrder) | **POST** /orders/{order_id}/items | Add a Portfolio Item to the Order in Pending State
-*ServicePortalApi.AdminsApi* | [**catalogItems**](docs/AdminsApi.md#catalogItems) | **GET** /catalog_items | fetches catalog items from all providers
-*ServicePortalApi.AdminsApi* | [**catalogPlanParameters**](docs/AdminsApi.md#catalogPlanParameters) | **GET** /providers/{provider_id}/catalog_items/{catalog_id}/plans/{plan_id}/parameters | Fetches catalog parameters, it needs the provider id, the catalog_id and the plan_id
-*ServicePortalApi.AdminsApi* | [**catalogPlanSchema**](docs/AdminsApi.md#catalogPlanSchema) | **GET** /providers/{provider_id}/catalog_items/{catalog_id}/plans/{plan_id}/json_schema | Fetches catalog json schema, it needs the provider id, the catalog_id and the plan_id
-*ServicePortalApi.AdminsApi* | [**fetchCatalogItemWithProvider**](docs/AdminsApi.md#fetchCatalogItemWithProvider) | **GET** /providers/{provider_id}/catalog_items | Fetch all or a specific catalog item from a specific provider
-*ServicePortalApi.AdminsApi* | [**fetchCatalogItemWithProviderAndCatalogID**](docs/AdminsApi.md#fetchCatalogItemWithProviderAndCatalogID) | **GET** /providers/{provider_id}/catalog_items/{catalog_id} | Fetches a specific catalog item for a provider
 *ServicePortalApi.AdminsApi* | [**fetchPlansWithPortfolioItemId**](docs/AdminsApi.md#fetchPlansWithPortfolioItemId) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item
-*ServicePortalApi.AdminsApi* | [**fetchPlansWithProviderAndCatalogID**](docs/AdminsApi.md#fetchPlansWithProviderAndCatalogID) | **GET** /providers/{provider_id}/catalog_items/{catalog_id}/plans | Fetches all the plans for a specific catalog item for a provider
 *ServicePortalApi.AdminsApi* | [**fetchPortfolioItemFromPortfolio**](docs/AdminsApi.md#fetchPortfolioItemFromPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items/{portfolio_item_id} | Fetch a portfolio item from a specific portfolio
 *ServicePortalApi.AdminsApi* | [**fetchPortfolioItemsWithPortfolio**](docs/AdminsApi.md#fetchPortfolioItemsWithPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items | Fetch all portfolio items from a specific portfolio
 *ServicePortalApi.AdminsApi* | [**fetchPortfolioWithId**](docs/AdminsApi.md#fetchPortfolioWithId) | **GET** /portfolios/{portfolio_id} | Fetch a specific Portfolio
@@ -122,17 +115,10 @@ Class | Method | HTTP request | Description
 *ServicePortalApi.AdminsApi* | [**listPortfolioItems**](docs/AdminsApi.md#listPortfolioItems) | **GET** /portfolio_items | API to list portfolio_items
 *ServicePortalApi.AdminsApi* | [**listPortfolios**](docs/AdminsApi.md#listPortfolios) | **GET** /portfolios | API to list portfolios
 *ServicePortalApi.AdminsApi* | [**listProgressMessages**](docs/AdminsApi.md#listProgressMessages) | **GET** /order_items/{order_item_id}/progress_messages | Get a list of progress messages in an item
-*ServicePortalApi.AdminsApi* | [**listProviders**](docs/AdminsApi.md#listProviders) | **GET** /providers | Temporary API to list provider
 *ServicePortalApi.AdminsApi* | [**newOrder**](docs/AdminsApi.md#newOrder) | **POST** /orders | Create a new order
 *ServicePortalApi.AdminsApi* | [**submitOrder**](docs/AdminsApi.md#submitOrder) | **POST** /orders/{order_id} | Submit the given order
 *ServicePortalApi.UsersApi* | [**addToOrder**](docs/UsersApi.md#addToOrder) | **POST** /orders/{order_id}/items | Add a Portfolio Item to the Order in Pending State
-*ServicePortalApi.UsersApi* | [**catalogItems**](docs/UsersApi.md#catalogItems) | **GET** /catalog_items | fetches catalog items from all providers
-*ServicePortalApi.UsersApi* | [**catalogPlanParameters**](docs/UsersApi.md#catalogPlanParameters) | **GET** /providers/{provider_id}/catalog_items/{catalog_id}/plans/{plan_id}/parameters | Fetches catalog parameters, it needs the provider id, the catalog_id and the plan_id
-*ServicePortalApi.UsersApi* | [**catalogPlanSchema**](docs/UsersApi.md#catalogPlanSchema) | **GET** /providers/{provider_id}/catalog_items/{catalog_id}/plans/{plan_id}/json_schema | Fetches catalog json schema, it needs the provider id, the catalog_id and the plan_id
-*ServicePortalApi.UsersApi* | [**fetchCatalogItemWithProvider**](docs/UsersApi.md#fetchCatalogItemWithProvider) | **GET** /providers/{provider_id}/catalog_items | Fetch all or a specific catalog item from a specific provider
-*ServicePortalApi.UsersApi* | [**fetchCatalogItemWithProviderAndCatalogID**](docs/UsersApi.md#fetchCatalogItemWithProviderAndCatalogID) | **GET** /providers/{provider_id}/catalog_items/{catalog_id} | Fetches a specific catalog item for a provider
 *ServicePortalApi.UsersApi* | [**fetchPlansWithPortfolioItemId**](docs/UsersApi.md#fetchPlansWithPortfolioItemId) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item
-*ServicePortalApi.UsersApi* | [**fetchPlansWithProviderAndCatalogID**](docs/UsersApi.md#fetchPlansWithProviderAndCatalogID) | **GET** /providers/{provider_id}/catalog_items/{catalog_id}/plans | Fetches all the plans for a specific catalog item for a provider
 *ServicePortalApi.UsersApi* | [**fetchPortfolioItemFromPortfolio**](docs/UsersApi.md#fetchPortfolioItemFromPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items/{portfolio_item_id} | Fetch a portfolio item from a specific portfolio
 *ServicePortalApi.UsersApi* | [**fetchPortfolioItemsWithPortfolio**](docs/UsersApi.md#fetchPortfolioItemsWithPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items | Fetch all portfolio items from a specific portfolio
 *ServicePortalApi.UsersApi* | [**fetchPortfolioWithId**](docs/UsersApi.md#fetchPortfolioWithId) | **GET** /portfolios/{portfolio_id} | Fetch a specific Portfolio
@@ -146,18 +132,14 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [ServicePortalApi.CatalogItem](docs/CatalogItem.md)
- - [ServicePortalApi.CatalogPlan](docs/CatalogPlan.md)
- - [ServicePortalApi.JSONSchema](docs/JSONSchema.md)
+ - [ServicePortalApi.AddPortfolioItem](docs/AddPortfolioItem.md)
+ - [ServicePortalApi.CreatePortfolioItem](docs/CreatePortfolioItem.md)
  - [ServicePortalApi.Order](docs/Order.md)
  - [ServicePortalApi.OrderItem](docs/OrderItem.md)
  - [ServicePortalApi.Organization](docs/Organization.md)
- - [ServicePortalApi.ParameterValue](docs/ParameterValue.md)
- - [ServicePortalApi.PlanParameter](docs/PlanParameter.md)
  - [ServicePortalApi.Portfolio](docs/Portfolio.md)
  - [ServicePortalApi.PortfolioItem](docs/PortfolioItem.md)
  - [ServicePortalApi.ProgressMessage](docs/ProgressMessage.md)
- - [ServicePortalApi.Provider](docs/Provider.md)
  - [ServicePortalApi.ServicePlan](docs/ServicePlan.md)
 
 

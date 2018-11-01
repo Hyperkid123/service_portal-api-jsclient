@@ -13,16 +13,13 @@
 
 
 import ApiClient from "../ApiClient";
-import CatalogItem from '../model/CatalogItem';
-import CatalogPlan from '../model/CatalogPlan';
-import JSONSchema from '../model/JSONSchema';
+import AddPortfolioItem from '../model/AddPortfolioItem';
+import CreatePortfolioItem from '../model/CreatePortfolioItem';
 import Order from '../model/Order';
 import OrderItem from '../model/OrderItem';
-import PlanParameter from '../model/PlanParameter';
 import Portfolio from '../model/Portfolio';
 import PortfolioItem from '../model/PortfolioItem';
 import ProgressMessage from '../model/ProgressMessage';
-import Provider from '../model/Provider';
 import ServicePlan from '../model/ServicePlan';
 
 /**
@@ -98,7 +95,7 @@ export default class AdminsApi {
     /**
      * API to add a new portfolio item
      * Returns the added portfolio item object 
-     * @param {module:model/PortfolioItem} body 
+     * @param {module:model/CreatePortfolioItem} body
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Object} and HTTP response
      */
     addPortfolioItemWithHttpInfo(body) {
@@ -134,7 +131,7 @@ export default class AdminsApi {
     /**
      * API to add a new portfolio item
      * Returns the added portfolio item object 
-     * @param {module:model/PortfolioItem} body 
+     * @param {module:model/CreatePortfolioItem} body
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Object}
      */
     addPortfolioItem(body) {
@@ -149,26 +146,25 @@ export default class AdminsApi {
      * Add Portfolio item to a portfolio
      * Add new portfolio item to an existing portfolio 
      * @param {String} portfolioId The Portfolio ID
-     * @param {String} portfolioItemId The Portfolio Item ID
+     * @param {module:model/AddPortfolioItem} body
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
-    addPortfolioItemToPortfolioWithHttpInfo(portfolioId, portfolioItemId) {
-      let postBody = null;
+    addPortfolioItemToPortfolioWithHttpInfo(portfolioId, body) {
+      let postBody = body;
 
       // verify the required parameter 'portfolioId' is set
       if (portfolioId === undefined || portfolioId === null) {
         throw new Error("Missing the required parameter 'portfolioId' when calling addPortfolioItemToPortfolio");
       }
 
-      // verify the required parameter 'portfolioItemId' is set
-      if (portfolioItemId === undefined || portfolioItemId === null) {
-        throw new Error("Missing the required parameter 'portfolioItemId' when calling addPortfolioItemToPortfolio");
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling addPortfolioItemToPortfolio");
       }
 
 
       let pathParams = {
-        'portfolio_id': portfolioId,
-        'portfolio_item_id': portfolioItemId
+        'portfolio_id': portfolioId
       };
       let queryParams = {
       };
@@ -183,7 +179,7 @@ export default class AdminsApi {
       let returnType = null;
 
       return this.apiClient.callApi(
-        '/portfolios/{portfolio_id}/portfolio_items/{portfolio_item_id}', 'POST',
+        '/portfolios/{portfolio_id}/portfolio_items', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -193,61 +189,11 @@ export default class AdminsApi {
      * Add Portfolio item to a portfolio
      * Add new portfolio item to an existing portfolio 
      * @param {String} portfolioId The Portfolio ID
-     * @param {String} portfolioItemId The Portfolio Item ID
+     * @param {module:model/AddPortfolioItem} body
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
-    addPortfolioItemToPortfolio(portfolioId, portfolioItemId) {
-      return this.addPortfolioItemToPortfolioWithHttpInfo(portfolioId, portfolioItemId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Temporary API to add a new provider
-     * Returns the added provider object 
-     * @param {module:model/Provider} body 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Object} and HTTP response
-     */
-    addProviderWithHttpInfo(body) {
-      let postBody = body;
-
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling addProvider");
-      }
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['AdminSecurity', 'UserSecurity'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = Object;
-
-      return this.apiClient.callApi(
-        '/providers', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Temporary API to add a new provider
-     * Returns the added provider object 
-     * @param {module:model/Provider} body 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Object}
-     */
-    addProvider(body) {
-      return this.addProviderWithHttpInfo(body)
+    addPortfolioItemToPortfolio(portfolioId, body) {
+      return this.addPortfolioItemToPortfolioWithHttpInfo(portfolioId, body)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -313,308 +259,6 @@ export default class AdminsApi {
 
 
     /**
-     * fetches catalog items from all providers
-     * Fetch catalog item from all defined providers 
-     * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit How many catalog items to return at one time (max 1000)
-     * @param {Number} opts.offset Starting Offset (default to 0)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/CatalogItem>} and HTTP response
-     */
-    catalogItemsWithHttpInfo(opts) {
-      opts = opts || {};
-      let postBody = null;
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-        'limit': opts['limit'],
-        'offset': opts['offset']
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['AdminSecurity', 'UserSecurity'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = [CatalogItem];
-
-      return this.apiClient.callApi(
-        '/catalog_items', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * fetches catalog items from all providers
-     * Fetch catalog item from all defined providers 
-     * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit How many catalog items to return at one time (max 1000)
-     * @param {Number} opts.offset Starting Offset (default to 0)
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/CatalogItem>}
-     */
-    catalogItems(opts) {
-      return this.catalogItemsWithHttpInfo(opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Fetches catalog parameters, it needs the provider id, the catalog_id and the plan_id
-     * Return a JSON object with the parameters needed for a specific plan of a catalog item 
-     * @param {String} providerId The Provider ID
-     * @param {String} catalogId The Catalog ID
-     * @param {String} planId The Plan ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/PlanParameter>} and HTTP response
-     */
-    catalogPlanParametersWithHttpInfo(providerId, catalogId, planId) {
-      let postBody = null;
-
-      // verify the required parameter 'providerId' is set
-      if (providerId === undefined || providerId === null) {
-        throw new Error("Missing the required parameter 'providerId' when calling catalogPlanParameters");
-      }
-
-      // verify the required parameter 'catalogId' is set
-      if (catalogId === undefined || catalogId === null) {
-        throw new Error("Missing the required parameter 'catalogId' when calling catalogPlanParameters");
-      }
-
-      // verify the required parameter 'planId' is set
-      if (planId === undefined || planId === null) {
-        throw new Error("Missing the required parameter 'planId' when calling catalogPlanParameters");
-      }
-
-
-      let pathParams = {
-        'provider_id': providerId,
-        'catalog_id': catalogId,
-        'plan_id': planId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['AdminSecurity', 'UserSecurity'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = [PlanParameter];
-
-      return this.apiClient.callApi(
-        '/providers/{provider_id}/catalog_items/{catalog_id}/plans/{plan_id}/parameters', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Fetches catalog parameters, it needs the provider id, the catalog_id and the plan_id
-     * Return a JSON object with the parameters needed for a specific plan of a catalog item 
-     * @param {String} providerId The Provider ID
-     * @param {String} catalogId The Catalog ID
-     * @param {String} planId The Plan ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/PlanParameter>}
-     */
-    catalogPlanParameters(providerId, catalogId, planId) {
-      return this.catalogPlanParametersWithHttpInfo(providerId, catalogId, planId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Fetches catalog json schema, it needs the provider id, the catalog_id and the plan_id
-     * Return a JSON schema with the parameters needed for a specific plan of a catalog item 
-     * @param {String} providerId The Provider ID
-     * @param {String} catalogId The Catalog ID
-     * @param {String} planId The Plan ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/JSONSchema} and HTTP response
-     */
-    catalogPlanSchemaWithHttpInfo(providerId, catalogId, planId) {
-      let postBody = null;
-
-      // verify the required parameter 'providerId' is set
-      if (providerId === undefined || providerId === null) {
-        throw new Error("Missing the required parameter 'providerId' when calling catalogPlanSchema");
-      }
-
-      // verify the required parameter 'catalogId' is set
-      if (catalogId === undefined || catalogId === null) {
-        throw new Error("Missing the required parameter 'catalogId' when calling catalogPlanSchema");
-      }
-
-      // verify the required parameter 'planId' is set
-      if (planId === undefined || planId === null) {
-        throw new Error("Missing the required parameter 'planId' when calling catalogPlanSchema");
-      }
-
-
-      let pathParams = {
-        'provider_id': providerId,
-        'catalog_id': catalogId,
-        'plan_id': planId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['AdminSecurity', 'UserSecurity'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = JSONSchema;
-
-      return this.apiClient.callApi(
-        '/providers/{provider_id}/catalog_items/{catalog_id}/plans/{plan_id}/json_schema', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Fetches catalog json schema, it needs the provider id, the catalog_id and the plan_id
-     * Return a JSON schema with the parameters needed for a specific plan of a catalog item 
-     * @param {String} providerId The Provider ID
-     * @param {String} catalogId The Catalog ID
-     * @param {String} planId The Plan ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/JSONSchema}
-     */
-    catalogPlanSchema(providerId, catalogId, planId) {
-      return this.catalogPlanSchemaWithHttpInfo(providerId, catalogId, planId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Fetch all or a specific catalog item from a specific provider
-     * By passing in the provider id you can fetch all the catalog items in the provider. You can limit to a specific catalog item by passing its id 
-     * @param {String} providerId The Provider ID
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.catalogId The Catalog ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/CatalogItem>} and HTTP response
-     */
-    fetchCatalogItemWithProviderWithHttpInfo(providerId, opts) {
-      opts = opts || {};
-      let postBody = null;
-
-      // verify the required parameter 'providerId' is set
-      if (providerId === undefined || providerId === null) {
-        throw new Error("Missing the required parameter 'providerId' when calling fetchCatalogItemWithProvider");
-      }
-
-
-      let pathParams = {
-        'provider_id': providerId
-      };
-      let queryParams = {
-        'catalog_id': opts['catalogId']
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['AdminSecurity', 'UserSecurity'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = [CatalogItem];
-
-      return this.apiClient.callApi(
-        '/providers/{provider_id}/catalog_items', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Fetch all or a specific catalog item from a specific provider
-     * By passing in the provider id you can fetch all the catalog items in the provider. You can limit to a specific catalog item by passing its id 
-     * @param {String} providerId The Provider ID
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.catalogId The Catalog ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/CatalogItem>}
-     */
-    fetchCatalogItemWithProvider(providerId, opts) {
-      return this.fetchCatalogItemWithProviderWithHttpInfo(providerId, opts)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Fetches a specific catalog item for a provider
-     * Fetch a catalog item by its ID and provider ID 
-     * @param {String} providerId The Provider ID
-     * @param {String} catalogId The Catalog ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/CatalogItem>} and HTTP response
-     */
-    fetchCatalogItemWithProviderAndCatalogIDWithHttpInfo(providerId, catalogId) {
-      let postBody = null;
-
-      // verify the required parameter 'providerId' is set
-      if (providerId === undefined || providerId === null) {
-        throw new Error("Missing the required parameter 'providerId' when calling fetchCatalogItemWithProviderAndCatalogID");
-      }
-
-      // verify the required parameter 'catalogId' is set
-      if (catalogId === undefined || catalogId === null) {
-        throw new Error("Missing the required parameter 'catalogId' when calling fetchCatalogItemWithProviderAndCatalogID");
-      }
-
-
-      let pathParams = {
-        'provider_id': providerId,
-        'catalog_id': catalogId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['AdminSecurity', 'UserSecurity'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = [CatalogItem];
-
-      return this.apiClient.callApi(
-        '/providers/{provider_id}/catalog_items/{catalog_id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Fetches a specific catalog item for a provider
-     * Fetch a catalog item by its ID and provider ID 
-     * @param {String} providerId The Provider ID
-     * @param {String} catalogId The Catalog ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/CatalogItem>}
-     */
-    fetchCatalogItemWithProviderAndCatalogID(providerId, catalogId) {
-      return this.fetchCatalogItemWithProviderAndCatalogIDWithHttpInfo(providerId, catalogId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
      * Fetches all the service plans for a specific portfolio item
      * Fetch all service plans for a portfolio item 
      * @param {String} portfolioItemId The Portfolio Item ID
@@ -659,65 +303,6 @@ export default class AdminsApi {
      */
     fetchPlansWithPortfolioItemId(portfolioItemId) {
       return this.fetchPlansWithPortfolioItemIdWithHttpInfo(portfolioItemId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Fetches all the plans for a specific catalog item for a provider
-     * Fetch all plans for catalog item by its ID and provider ID 
-     * @param {String} providerId The Provider ID
-     * @param {String} catalogId The Catalog ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/CatalogPlan>} and HTTP response
-     */
-    fetchPlansWithProviderAndCatalogIDWithHttpInfo(providerId, catalogId) {
-      let postBody = null;
-
-      // verify the required parameter 'providerId' is set
-      if (providerId === undefined || providerId === null) {
-        throw new Error("Missing the required parameter 'providerId' when calling fetchPlansWithProviderAndCatalogID");
-      }
-
-      // verify the required parameter 'catalogId' is set
-      if (catalogId === undefined || catalogId === null) {
-        throw new Error("Missing the required parameter 'catalogId' when calling fetchPlansWithProviderAndCatalogID");
-      }
-
-
-      let pathParams = {
-        'provider_id': providerId,
-        'catalog_id': catalogId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['AdminSecurity', 'UserSecurity'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = [CatalogPlan];
-
-      return this.apiClient.callApi(
-        '/providers/{provider_id}/catalog_items/{catalog_id}/plans', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Fetches all the plans for a specific catalog item for a provider
-     * Fetch all plans for catalog item by its ID and provider ID 
-     * @param {String} providerId The Provider ID
-     * @param {String} catalogId The Catalog ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/CatalogPlan>}
-     */
-    fetchPlansWithProviderAndCatalogID(providerId, catalogId) {
-      return this.fetchPlansWithProviderAndCatalogIDWithHttpInfo(providerId, catalogId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -1169,49 +754,6 @@ export default class AdminsApi {
      */
     listProgressMessages(orderItemId) {
       return this.listProgressMessagesWithHttpInfo(orderItemId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Temporary API to list provider
-     * Returns an array of provider objects 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/Provider>} and HTTP response
-     */
-    listProvidersWithHttpInfo() {
-      let postBody = null;
-
-
-      let pathParams = {
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['AdminSecurity', 'UserSecurity'];
-      let contentTypes = ['application/json'];
-      let accepts = ['application/json'];
-      let returnType = [Provider];
-
-      return this.apiClient.callApi(
-        '/providers', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Temporary API to list provider
-     * Returns an array of provider objects 
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/Provider>}
-     */
-    listProviders() {
-      return this.listProvidersWithHttpInfo()
         .then(function(response_and_data) {
           return response_and_data.data;
         });
