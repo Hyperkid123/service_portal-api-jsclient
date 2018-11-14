@@ -37,7 +37,8 @@ export default class ApiClient {
         let apiHost = process.env.API_HOST || "localhost";
         let apiPort = process.env.API_PORT || "5000";
         let basePath = process.env.BASE_PATH || "";
-        this.basePath = 'https://' + apiHost + ':' + apiPort + basePath.replace(/\/+$/, '');
+        let apiVersion = process.env.API_VERSION || "/api/v0.0";
+        this.basePath = 'https://' + apiHost + ':' + apiPort + basePath + apiVersion.replace(/\/+$/, '');
 
         /**
          * The authentication methods to be included for all API calls.
