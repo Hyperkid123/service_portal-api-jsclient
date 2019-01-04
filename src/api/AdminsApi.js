@@ -45,7 +45,7 @@ export default class AdminsApi {
     /**
      * API to add a new portfolio
      * Returns the added portfolio object 
-     * @param {module:model/Portfolio} portfolio
+     * @param {module:model/Portfolio} portfolio 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Portfolio} and HTTP response
      */
     addPortfolioWithHttpInfo(portfolio) {
@@ -81,7 +81,7 @@ export default class AdminsApi {
     /**
      * API to add a new portfolio
      * Returns the added portfolio object 
-     * @param {module:model/Portfolio} portfolio
+     * @param {module:model/Portfolio} portfolio 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Portfolio}
      */
     addPortfolio(portfolio) {
@@ -94,8 +94,8 @@ export default class AdminsApi {
 
     /**
      * API to add a new portfolio item
-     * This API would connect to the Topology Service to fetch the name and description of the service offering. Returns the added portfolio item object
-     * @param {module:model/CreatePortfolioItem} createPortfolioItem
+     * This API would connect to the Topology Service to fetch the name and description of the service offering. Returns the added portfolio item object 
+     * @param {module:model/CreatePortfolioItem} createPortfolioItem 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PortfolioItem} and HTTP response
      */
     addPortfolioItemWithHttpInfo(createPortfolioItem) {
@@ -130,8 +130,8 @@ export default class AdminsApi {
 
     /**
      * API to add a new portfolio item
-     * This API would connect to the Topology Service to fetch the name and description of the service offering. Returns the added portfolio item object
-     * @param {module:model/CreatePortfolioItem} createPortfolioItem
+     * This API would connect to the Topology Service to fetch the name and description of the service offering. Returns the added portfolio item object 
+     * @param {module:model/CreatePortfolioItem} createPortfolioItem 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PortfolioItem}
      */
     addPortfolioItem(createPortfolioItem) {
@@ -146,7 +146,7 @@ export default class AdminsApi {
      * Add Portfolio item to a portfolio
      * Add new portfolio item to an existing portfolio 
      * @param {String} portfolioId The Portfolio ID
-     * @param {module:model/AddPortfolioItem} addPortfolioItem
+     * @param {module:model/AddPortfolioItem} addPortfolioItem 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     addPortfolioItemToPortfolioWithHttpInfo(portfolioId, addPortfolioItem) {
@@ -189,7 +189,7 @@ export default class AdminsApi {
      * Add Portfolio item to a portfolio
      * Add new portfolio item to an existing portfolio 
      * @param {String} portfolioId The Portfolio ID
-     * @param {module:model/AddPortfolioItem} addPortfolioItem
+     * @param {module:model/AddPortfolioItem} addPortfolioItem 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     addPortfolioItemToPortfolio(portfolioId, addPortfolioItem) {
@@ -202,9 +202,9 @@ export default class AdminsApi {
 
     /**
      * Add an Order Item to the Order in Pending State
-     * Add an order item to the order in Pending State
+     * Add an order item to the order in Pending State 
      * @param {String} orderId The Order ID
-     * @param {module:model/OrderItem} orderItem
+     * @param {module:model/OrderItem} orderItem 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     addToOrderWithHttpInfo(orderId, orderItem) {
@@ -245,9 +245,9 @@ export default class AdminsApi {
 
     /**
      * Add an Order Item to the Order in Pending State
-     * Add an order item to the order in Pending State
+     * Add an order item to the order in Pending State 
      * @param {String} orderId The Order ID
-     * @param {module:model/OrderItem} orderItem
+     * @param {module:model/OrderItem} orderItem 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     addToOrder(orderId, orderItem) {
@@ -259,10 +259,112 @@ export default class AdminsApi {
 
 
     /**
-     * Edit an existing portfolio
-     * Returns the edited portfolio object
+     * Delete an existing portfolio
+     * Deletes the portfolio id passed in as the param. 
      * @param {String} portfolioId The Portfolio ID
-     * @param {module:model/Portfolio} portfolio
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Portfolio} and HTTP response
+     */
+    destroyPortfolioWithHttpInfo(portfolioId) {
+      let postBody = null;
+
+      // verify the required parameter 'portfolioId' is set
+      if (portfolioId === undefined || portfolioId === null) {
+        throw new Error("Missing the required parameter 'portfolioId' when calling destroyPortfolio");
+      }
+
+
+      let pathParams = {
+        'portfolio_id': portfolioId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['APIKeyAuth', 'BasicAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = Portfolio;
+
+      return this.apiClient.callApi(
+        '/portfolios/{portfolio_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Delete an existing portfolio
+     * Deletes the portfolio id passed in as the param. 
+     * @param {String} portfolioId The Portfolio ID
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Portfolio}
+     */
+    destroyPortfolio(portfolioId) {
+      return this.destroyPortfolioWithHttpInfo(portfolioId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Delete an existing portfolio item
+     * Deletes the portfolio item id passed in as the param. 
+     * @param {String} portfolioItemId The Portfolio Item ID
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
+     */
+    destroyPortfolioItemWithHttpInfo(portfolioItemId) {
+      let postBody = null;
+
+      // verify the required parameter 'portfolioItemId' is set
+      if (portfolioItemId === undefined || portfolioItemId === null) {
+        throw new Error("Missing the required parameter 'portfolioItemId' when calling destroyPortfolioItem");
+      }
+
+
+      let pathParams = {
+        'portfolio_item_id': portfolioItemId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['APIKeyAuth', 'BasicAuth'];
+      let contentTypes = [];
+      let accepts = [];
+      let returnType = null;
+
+      return this.apiClient.callApi(
+        '/portfolio_items/{portfolio_item_id}', 'DELETE',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Delete an existing portfolio item
+     * Deletes the portfolio item id passed in as the param. 
+     * @param {String} portfolioItemId The Portfolio Item ID
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}
+     */
+    destroyPortfolioItem(portfolioItemId) {
+      return this.destroyPortfolioItemWithHttpInfo(portfolioItemId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Edit an existing portfolio
+     * Returns the edited portfolio object 
+     * @param {String} portfolioId The Portfolio ID
+     * @param {module:model/Portfolio} portfolio 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Portfolio} and HTTP response
      */
     editPortfolioWithHttpInfo(portfolioId, portfolio) {
@@ -303,9 +405,9 @@ export default class AdminsApi {
 
     /**
      * Edit an existing portfolio
-     * Returns the edited portfolio object
+     * Returns the edited portfolio object 
      * @param {String} portfolioId The Portfolio ID
-     * @param {module:model/Portfolio} portfolio
+     * @param {module:model/Portfolio} portfolio 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Portfolio}
      */
     editPortfolio(portfolioId, portfolio) {
@@ -530,7 +632,7 @@ export default class AdminsApi {
 
     /**
      * Get an individual order item from a given order
-     * Get an order item associated with an order.
+     * Get an order item associated with an order. 
      * @param {String} orderId The Order ID
      * @param {String} orderItemId The Order Item ID
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/OrderItem} and HTTP response
@@ -574,7 +676,7 @@ export default class AdminsApi {
 
     /**
      * Get an individual order item from a given order
-     * Get an order item associated with an order.
+     * Get an order item associated with an order. 
      * @param {String} orderId The Order ID
      * @param {String} orderItemId The Order Item ID
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OrderItem}

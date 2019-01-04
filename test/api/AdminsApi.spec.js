@@ -88,6 +88,26 @@
         done();
       });
     });
+    describe('destroyPortfolio', function() {
+      it('should call destroyPortfolio successfully', function(done) {
+        //uncomment below and update the code to test destroyPortfolio
+        //instance.destroyPortfolio(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
+    describe('destroyPortfolioItem', function() {
+      it('should call destroyPortfolioItem successfully', function(done) {
+        //uncomment below and update the code to test destroyPortfolioItem
+        //instance.destroyPortfolioItem(function(error) {
+        //  if (error) throw error;
+        //expect().to.be();
+        //});
+        done();
+      });
+    });
     describe('editPortfolio', function() {
       it('should call editPortfolio successfully', function(done) {
         //uncomment below and update the code to test editPortfolio

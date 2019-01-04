@@ -102,6 +102,8 @@ Class | Method | HTTP request | Description
 *ServicePortalApi.AdminsApi* | [**addPortfolioItem**](docs/AdminsApi.md#addPortfolioItem) | **POST** /portfolio_items | API to add a new portfolio item
 *ServicePortalApi.AdminsApi* | [**addPortfolioItemToPortfolio**](docs/AdminsApi.md#addPortfolioItemToPortfolio) | **POST** /portfolios/{portfolio_id}/portfolio_items | Add Portfolio item to a portfolio
 *ServicePortalApi.AdminsApi* | [**addToOrder**](docs/AdminsApi.md#addToOrder) | **POST** /orders/{order_id}/items | Add an Order Item to the Order in Pending State
+*ServicePortalApi.AdminsApi* | [**destroyPortfolio**](docs/AdminsApi.md#destroyPortfolio) | **DELETE** /portfolios/{portfolio_id} | Delete an existing portfolio
+*ServicePortalApi.AdminsApi* | [**destroyPortfolioItem**](docs/AdminsApi.md#destroyPortfolioItem) | **DELETE** /portfolio_items/{portfolio_item_id} | Delete an existing portfolio item
 *ServicePortalApi.AdminsApi* | [**editPortfolio**](docs/AdminsApi.md#editPortfolio) | **PATCH** /portfolios/{portfolio_id} | Edit an existing portfolio
 *ServicePortalApi.AdminsApi* | [**fetchPlansWithPortfolioItemId**](docs/AdminsApi.md#fetchPlansWithPortfolioItemId) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
 *ServicePortalApi.AdminsApi* | [**fetchPortfolioItemFromPortfolio**](docs/AdminsApi.md#fetchPortfolioItemFromPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items/{portfolio_item_id} | Fetch a single portfolio item from a specific portfolio

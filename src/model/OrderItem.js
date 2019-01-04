@@ -22,13 +22,13 @@ class OrderItem {
     /**
      * Constructs a new <code>OrderItem</code>.
      * @alias module:model/OrderItem
-     * @param count {Number}
-     * @param serviceParameters {Object}
+     * @param count {Number} 
+     * @param serviceParameters {Object} 
      * @param providerControlParameters {Object} The provider specific parameters needed to provision this service. This might include namespaces, special keys
      * @param servicePlanRef {String} Stores the Plan ref from the Topology Service
      * @param portfolioItemId {String} Stores the Portfolio Item ID
      */
-    constructor(count, serviceParameters, providerControlParameters, servicePlanRef, portfolioItemId) {
+    constructor(count, serviceParameters, providerControlParameters, servicePlanRef, portfolioItemId) { 
         
         OrderItem.initialize(this, count, serviceParameters, providerControlParameters, servicePlanRef, portfolioItemId);
     }
@@ -38,7 +38,7 @@ class OrderItem {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, count, serviceParameters, providerControlParameters, servicePlanRef, portfolioItemId) {
+    static initialize(obj, count, serviceParameters, providerControlParameters, servicePlanRef, portfolioItemId) { 
         obj['count'] = count;
         obj['service_parameters'] = serviceParameters;
         obj['provider_control_parameters'] = providerControlParameters;
