@@ -4,49 +4,47 @@ All URIs are relative to *https://localhost/r/insights/platform/service-portal*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addToOrder**](UsersApi.md#addToOrder) | **POST** /orders/{order_id}/items | Add a Portfolio Item to the Order in Pending State
-[**fetchPlansWithPortfolioItemId**](UsersApi.md#fetchPlansWithPortfolioItemId) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item
-[**fetchPortfolioItemFromPortfolio**](UsersApi.md#fetchPortfolioItemFromPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items/{portfolio_item_id} | Fetch a portfolio item from a specific portfolio
+[**addToOrder**](UsersApi.md#addToOrder) | **POST** /orders/{order_id}/items | Add an Order Item to the Order in Pending State
+[**fetchPlansWithPortfolioItemId**](UsersApi.md#fetchPlansWithPortfolioItemId) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
+[**fetchPortfolioItemFromPortfolio**](UsersApi.md#fetchPortfolioItemFromPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items/{portfolio_item_id} | Fetch a single portfolio item from a specific portfolio
 [**fetchPortfolioItemsWithPortfolio**](UsersApi.md#fetchPortfolioItemsWithPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items | Fetch all portfolio items from a specific portfolio
 [**fetchPortfolioWithId**](UsersApi.md#fetchPortfolioWithId) | **GET** /portfolios/{portfolio_id} | Fetch a specific Portfolio
-[**listOrderItem**](UsersApi.md#listOrderItem) | **GET** /orders/{order_id}/items/{order_item_id} | Get an individual item from a given order
+[**listOrderItem**](UsersApi.md#listOrderItem) | **GET** /orders/{order_id}/items/{order_item_id} | Get an individual order item from a given order
 [**listOrderItems**](UsersApi.md#listOrderItems) | **GET** /orders/{order_id}/items | Get a list of items in a given order
 [**listOrders**](UsersApi.md#listOrders) | **GET** /orders | Get a list of orders
-[**listPortfolioItems**](UsersApi.md#listPortfolioItems) | **GET** /portfolio_items | API to list portfolio_items
+[**listPortfolioItems**](UsersApi.md#listPortfolioItems) | **GET** /portfolio_items | API to list all portfolio items
 [**listPortfolios**](UsersApi.md#listPortfolios) | **GET** /portfolios | API to list portfolios
 [**listProgressMessages**](UsersApi.md#listProgressMessages) | **GET** /order_items/{order_item_id}/progress_messages | Get a list of progress messages in an item
 
 
 <a name="addToOrder"></a>
 # **addToOrder**
-> addToOrder(orderIditem)
+> addToOrder(orderId, orderItem)
 
-Add a Portfolio Item to the Order in Pending State
+Add an Order Item to the Order in Pending State
 
-Add a catalog item to the order in Pending State 
+Add an order item to the order in Pending State 
 
 ### Example
 ```javascript
 import ServicePortalApi from 'service_portal_api';
 let defaultClient = ServicePortalApi.ApiClient.instance;
 
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
 
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.UsersApi();
-
 let orderId = "orderId_example"; // String | The Order ID
-
-let item = new ServicePortalApi.OrderItem(); // OrderItem | 
-
-apiInstance.addToOrder(orderIditem).then(() => {
+let orderItem = new ServicePortalApi.OrderItem(); // OrderItem | 
+apiInstance.addToOrder(orderId, orderItem).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -59,7 +57,7 @@ apiInstance.addToOrder(orderIditem).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **String**| The Order ID | 
- **item** | [**OrderItem**](OrderItem.md)|  | 
+ **orderItem** | [**OrderItem**](OrderItem.md)|  | 
 
 ### Return type
 
@@ -67,18 +65,18 @@ null (empty response body)
 
 ### Authorization
 
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 <a name="fetchPlansWithPortfolioItemId"></a>
 # **fetchPlansWithPortfolioItemId**
 > [ServicePlan] fetchPlansWithPortfolioItemId(portfolioItemId)
 
-Fetches all the service plans for a specific portfolio item
+Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
 
 Fetch all service plans for a portfolio item 
 
@@ -87,20 +85,19 @@ Fetch all service plans for a portfolio item
 import ServicePortalApi from 'service_portal_api';
 let defaultClient = ServicePortalApi.ApiClient.instance;
 
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
 
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.UsersApi();
-
 let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
-
 apiInstance.fetchPlansWithPortfolioItemId(portfolioItemId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -121,7 +118,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 
@@ -130,9 +127,9 @@ Name | Type | Description  | Notes
 
 <a name="fetchPortfolioItemFromPortfolio"></a>
 # **fetchPortfolioItemFromPortfolio**
-> [PortfolioItem] fetchPortfolioItemFromPortfolio(portfolioId, portfolioItemId)
+> PortfolioItem fetchPortfolioItemFromPortfolio(portfolioId, portfolioItemId)
 
-Fetch a portfolio item from a specific portfolio
+Fetch a single portfolio item from a specific portfolio
 
 By passing in the portfolio id and portfolio_item_id you can fetch the portfolio items in the portfolio. 
 
@@ -141,22 +138,20 @@ By passing in the portfolio id and portfolio_item_id you can fetch the portfolio
 import ServicePortalApi from 'service_portal_api';
 let defaultClient = ServicePortalApi.ApiClient.instance;
 
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
 
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.UsersApi();
-
 let portfolioId = "portfolioId_example"; // String | The Portfolio ID
-
 let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
-
 apiInstance.fetchPortfolioItemFromPortfolio(portfolioId, portfolioItemId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -174,11 +169,11 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[PortfolioItem]**](PortfolioItem.md)
+[**PortfolioItem**](PortfolioItem.md)
 
 ### Authorization
 
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 
@@ -187,7 +182,7 @@ Name | Type | Description  | Notes
 
 <a name="fetchPortfolioItemsWithPortfolio"></a>
 # **fetchPortfolioItemsWithPortfolio**
-> [PortfolioItem] fetchPortfolioItemsWithPortfolio(portfolioId, )
+> [PortfolioItem] fetchPortfolioItemsWithPortfolio(portfolioId)
 
 Fetch all portfolio items from a specific portfolio
 
@@ -198,21 +193,20 @@ By passing in the portfolio id you can fetch all the portfolio items in the port
 import ServicePortalApi from 'service_portal_api';
 let defaultClient = ServicePortalApi.ApiClient.instance;
 
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
 
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.UsersApi();
-
 let portfolioId = "portfolioId_example"; // String | The Portfolio ID
-
-apiInstance.fetchPortfolioItemsWithPortfolio(portfolioId, ).then((data) => {
+apiInstance.fetchPortfolioItemsWithPortfolio(portfolioId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -232,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 
@@ -241,7 +235,7 @@ Name | Type | Description  | Notes
 
 <a name="fetchPortfolioWithId"></a>
 # **fetchPortfolioWithId**
-> Portfolio fetchPortfolioWithId(portfolioId, )
+> Portfolio fetchPortfolioWithId(portfolioId)
 
 Fetch a specific Portfolio
 
@@ -252,21 +246,20 @@ By passing in the portfolio id you can fetch a specific portfolio.
 import ServicePortalApi from 'service_portal_api';
 let defaultClient = ServicePortalApi.ApiClient.instance;
 
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
 
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.UsersApi();
-
 let portfolioId = "portfolioId_example"; // String | The Portfolio ID
-
-apiInstance.fetchPortfolioWithId(portfolioId, ).then((data) => {
+apiInstance.fetchPortfolioWithId(portfolioId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -286,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 
@@ -295,34 +288,32 @@ Name | Type | Description  | Notes
 
 <a name="listOrderItem"></a>
 # **listOrderItem**
-> OrderItem listOrderItem(orderIdorderItemId)
+> OrderItem listOrderItem(orderId, orderItemId)
 
-Get an individual item from a given order
+Get an individual order item from a given order
 
-Get an item associated with an order. 
+Get an order item associated with an order. 
 
 ### Example
 ```javascript
 import ServicePortalApi from 'service_portal_api';
 let defaultClient = ServicePortalApi.ApiClient.instance;
 
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
 
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.UsersApi();
-
 let orderId = "orderId_example"; // String | The Order ID
-
 let orderItemId = "orderItemId_example"; // String | The Order Item ID
-
-apiInstance.listOrderItem(orderIdorderItemId).then((data) => {
+apiInstance.listOrderItem(orderId, orderItemId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -343,7 +334,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 
@@ -363,20 +354,19 @@ Get a list of items associated with an order.
 import ServicePortalApi from 'service_portal_api';
 let defaultClient = ServicePortalApi.ApiClient.instance;
 
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
 
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.UsersApi();
-
 let orderId = "orderId_example"; // String | The Order ID
-
 apiInstance.listOrderItems(orderId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -397,7 +387,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 
@@ -417,15 +407,16 @@ Get a list of orders associated with the logged in user.
 import ServicePortalApi from 'service_portal_api';
 let defaultClient = ServicePortalApi.ApiClient.instance;
 
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
 
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.UsersApi();
 apiInstance.listOrders().then((data) => {
@@ -445,7 +436,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 
@@ -456,7 +447,7 @@ This endpoint does not need any parameter.
 # **listPortfolioItems**
 > [PortfolioItem] listPortfolioItems()
 
-API to list portfolio_items
+API to list all portfolio items
 
 Returns an array of portfolio item objects 
 
@@ -465,15 +456,16 @@ Returns an array of portfolio item objects
 import ServicePortalApi from 'service_portal_api';
 let defaultClient = ServicePortalApi.ApiClient.instance;
 
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
 
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.UsersApi();
 apiInstance.listPortfolioItems().then((data) => {
@@ -493,11 +485,11 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="listPortfolios"></a>
@@ -513,15 +505,16 @@ Returns an array of portfolio objects
 import ServicePortalApi from 'service_portal_api';
 let defaultClient = ServicePortalApi.ApiClient.instance;
 
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
 
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.UsersApi();
 apiInstance.listPortfolios().then((data) => {
@@ -541,11 +534,11 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="listProgressMessages"></a>
@@ -561,20 +554,19 @@ Get a list of progress messages associated with an order item. As the item is be
 import ServicePortalApi from 'service_portal_api';
 let defaultClient = ServicePortalApi.ApiClient.instance;
 
-// Configure HTTP basic authorization: AdminSecurity
-let AdminSecurity = defaultClient.authentications['AdminSecurity'];
-AdminSecurity.username = 'YOUR USERNAME';
-AdminSecurity.password = 'YOUR PASSWORD';
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
 
-// Configure HTTP basic authorization: UserSecurity
-let UserSecurity = defaultClient.authentications['UserSecurity'];
-UserSecurity.username = 'YOUR USERNAME';
-UserSecurity.password = 'YOUR PASSWORD';
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.UsersApi();
-
 let orderItemId = "orderItemId_example"; // String | The Order Item ID
-
 apiInstance.listProgressMessages(orderItemId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -595,7 +587,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[AdminSecurity](../README.md#AdminSecurity), [UserSecurity](../README.md#UserSecurity)
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
 
 ### HTTP request headers
 

@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**serviceOfferingRef** | **String** |  | [optional] 
+**serviceOfferingRef** | **String** | The service offering ref should be retrieved from a call to the Topology Service | [optional] 
 
 

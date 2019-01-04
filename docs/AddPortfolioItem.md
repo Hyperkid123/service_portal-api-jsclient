@@ -3,6 +3,6 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**portfolioItemId** | **String** |  | [optional] 
+**portfolioItemId** | **String** | This is the id of the portfolio item object | [optional] 
 
 
