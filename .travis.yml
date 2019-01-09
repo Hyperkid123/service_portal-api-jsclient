@@ -4,4 +4,11 @@ node_js:
   - "6.1"
   - "5"
   - "5.11"
+deploy:
+  - provider: script
+    on:
+      branch: master
+    script:
+    - npx semantic-release
+    skip_cleanup: true
 
