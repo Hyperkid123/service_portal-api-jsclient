@@ -1,26 +1,43 @@
 {
-  "name": "service_portal_api",
-  "version": "1.0.1",
+  "name": "insigths-service-portal-api-client",
+  "version": "0.0.1",
   "description": "This_is_a_API_to_fetch_and_order_catalog_items_from_different_cloud_sources",
   "license": "Apache 2.0",
-  "main": "src/index.js",
+  "main": "./dist/main.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register --recursive"
+    "build": "webpack --config ./config/webpack.config.js"
   },
   "browser": {
     "fs": false
   },
   "dependencies": {
-    "babel": "^6.23.0",
-    "babel-cli": "^6.26.0",
     "superagent": "^3.8.3"
   },
   "devDependencies": {
-    "babel-core": "6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/runtime": "^7.2.0",
+    "@semantic-release/git": "^7.0.7",
+    "@semantic-release/npm": "^5.1.3",
+    "babel-loader": "^8.0.5",
     "expect.js": "~0.3.1",
     "mocha": "^5.2.0",
-    "sinon": "1.17.3"
+    "semantic-release": "^15.13.2",
+    "sinon": "1.17.3",
+    "webpack": "^4.28.1",
+    "webpack-cli": "^3.2.1"
+  },
+  "release": {
+    "prepare": [
+      "@semantic-release/npm",
+      {
+        "path": "@semantic-release/git",
+        "assets": [
+          "package.json"
+        ],
+        "message": "Release of new version: ${nextRelease.version} <no> [skip ci]"
+      }
+    ]
   }
 }
