@@ -1,6 +1,6 @@
 {
-  "name": "insigths-service-portal-api-client",
-  "version": "0.0.1",
+  "name": "@manageiq/service-portal-api",
+  "version": "1.0.0",
   "description": "This_is_a_API_to_fetch_and_order_catalog_items_from_different_cloud_sources",
   "license": "Apache 2.0",
   "main": "./dist/main.js",
