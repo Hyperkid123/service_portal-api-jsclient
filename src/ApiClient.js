@@ -40,6 +40,7 @@ class ApiClient {
         let apiVersion = process.env.API_VERSION || "/api/v0.0";
         this.basePath = 'https://' + apiHost + ':' + apiPort + basePath + apiVersion.replace(/\/+$/, '');
 
+
         /**
          * The authentication methods to be included for all API calls.
          * @type {Array.<String>}
