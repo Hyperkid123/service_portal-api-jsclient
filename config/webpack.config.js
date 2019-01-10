@@ -1,7 +1,7 @@
 const resolve = require('path').resolve;
 
 module.exports = {
-  entry: path.resolve('../src/index.js'),
+  entry: resolve('./src/index.js'),
   mode: 'production',
   module: {
     rules: [{
