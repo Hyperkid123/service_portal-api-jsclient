@@ -1,8 +1,8 @@
-const path = require('path');
+const resolve = require('path').resolve;
 
 module.exports = {
-  entry: path.resolve(__dirname, '../src/index.js'),
-  mode: 'development',
+  entry: path.resolve('../src/index.js'),
+  mode: 'production',
   module: {
     rules: [{
       test: /\.(js)$/,
@@ -14,7 +14,7 @@ module.exports = {
   },
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, '../dist'),
+    path: resolve('./dist'),
     library: '[name]',
     libraryTarget: 'umd',
   },
