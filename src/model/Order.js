@@ -12,7 +12,6 @@
  */
 
 import ApiClient from '../ApiClient';
-import OrderItem from './OrderItem';
 
 /**
  * The Order model module.
@@ -24,7 +23,7 @@ class Order {
      * Constructs a new <code>Order</code>.
      * @alias module:model/Order
      */
-    constructor() {
+    constructor() { 
         
         Order.initialize(this);
     }
@@ -34,7 +33,7 @@ class Order {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) {
+    static initialize(obj) { 
     }
 
     /**
@@ -65,9 +64,6 @@ class Order {
             }
             if (data.hasOwnProperty('completed_at')) {
                 obj['completed_at'] = ApiClient.convertToType(data['completed_at'], 'Date');
-            }
-            if (data.hasOwnProperty('order_items')) {
-                obj['order_items'] = ApiClient.convertToType(data['order_items'], [OrderItem]);
             }
         }
         return obj;
@@ -106,11 +102,6 @@ Order.prototype['ordered_at'] = undefined;
  * @member {Date} completed_at
  */
 Order.prototype['completed_at'] = undefined;
-
-/**
- * @member {Array.<module:model/OrderItem>} order_items
- */
-Order.prototype['order_items'] = undefined;
 
 
 

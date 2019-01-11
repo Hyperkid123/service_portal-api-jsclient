@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **createdAt** | **Date** |  | [optional] 
 **orderedAt** | **Date** |  | [optional] 
 **completedAt** | **Date** |  | [optional] 
-**orderItems** | [**[OrderItem]**](OrderItem.md) |  | [optional] 
 
 
 <a name="StateEnum"></a>

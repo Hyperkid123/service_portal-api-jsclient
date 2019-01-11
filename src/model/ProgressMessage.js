@@ -23,7 +23,7 @@ class ProgressMessage {
      * Constructs a new <code>ProgressMessage</code>.
      * @alias module:model/ProgressMessage
      */
-    constructor() {
+    constructor() { 
         
         ProgressMessage.initialize(this);
     }
@@ -33,7 +33,7 @@ class ProgressMessage {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) {
+    static initialize(obj) { 
     }
 
     /**

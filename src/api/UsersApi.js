@@ -42,9 +42,9 @@ export default class UsersApi {
 
     /**
      * Add an Order Item to the Order in Pending State
-     * Add an order item to the order in Pending State
+     * Add an order item to the order in Pending State 
      * @param {String} orderId The Order ID
-     * @param {module:model/OrderItem} orderItem
+     * @param {module:model/OrderItem} orderItem 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing HTTP response
      */
     addToOrderWithHttpInfo(orderId, orderItem) {
@@ -85,9 +85,9 @@ export default class UsersApi {
 
     /**
      * Add an Order Item to the Order in Pending State
-     * Add an order item to the order in Pending State
+     * Add an order item to the order in Pending State 
      * @param {String} orderId The Order ID
-     * @param {module:model/OrderItem} orderItem
+     * @param {module:model/OrderItem} orderItem 
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}
      */
     addToOrder(orderId, orderItem) {
@@ -312,7 +312,7 @@ export default class UsersApi {
 
     /**
      * Get an individual order item from a given order
-     * Get an order item associated with an order.
+     * Get an order item associated with an order. 
      * @param {String} orderId The Order ID
      * @param {String} orderItemId The Order Item ID
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/OrderItem} and HTTP response
@@ -356,7 +356,7 @@ export default class UsersApi {
 
     /**
      * Get an individual order item from a given order
-     * Get an order item associated with an order.
+     * Get an order item associated with an order. 
      * @param {String} orderId The Order ID
      * @param {String} orderItemId The Order Item ID
      * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OrderItem}

@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**addPortfolioItem**](AdminsApi.md#addPortfolioItem) | **POST** /portfolio_items | API to add a new portfolio item
 [**addPortfolioItemToPortfolio**](AdminsApi.md#addPortfolioItemToPortfolio) | **POST** /portfolios/{portfolio_id}/portfolio_items | Add Portfolio item to a portfolio
 [**addToOrder**](AdminsApi.md#addToOrder) | **POST** /orders/{order_id}/items | Add an Order Item to the Order in Pending State
+[**destroyPortfolio**](AdminsApi.md#destroyPortfolio) | **DELETE** /portfolios/{portfolio_id} | Delete an existing portfolio
+[**destroyPortfolioItem**](AdminsApi.md#destroyPortfolioItem) | **DELETE** /portfolio_items/{portfolio_item_id} | Delete an existing portfolio item
 [**editPortfolio**](AdminsApi.md#editPortfolio) | **PATCH** /portfolios/{portfolio_id} | Edit an existing portfolio
 [**fetchPlansWithPortfolioItemId**](AdminsApi.md#fetchPlansWithPortfolioItemId) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
 [**fetchPortfolioItemFromPortfolio**](AdminsApi.md#fetchPortfolioItemFromPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items/{portfolio_item_id} | Fetch a single portfolio item from a specific portfolio
@@ -237,6 +239,112 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="destroyPortfolio"></a>
+# **destroyPortfolio**
+> Portfolio destroyPortfolio(portfolioId)
+
+Delete an existing portfolio
+
+Deletes the portfolio id passed in as the param. 
+
+### Example
+```javascript
+import ServicePortalApi from 'service_portal_api';
+let defaultClient = ServicePortalApi.ApiClient.instance;
+
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+
+let apiInstance = new ServicePortalApi.AdminsApi();
+let portfolioId = "portfolioId_example"; // String | The Portfolio ID
+apiInstance.destroyPortfolio(portfolioId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **portfolioId** | **String**| The Portfolio ID | 
+
+### Return type
+
+[**Portfolio**](Portfolio.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="destroyPortfolioItem"></a>
+# **destroyPortfolioItem**
+> destroyPortfolioItem(portfolioItemId)
+
+Delete an existing portfolio item
+
+Deletes the portfolio item id passed in as the param. 
+
+### Example
+```javascript
+import ServicePortalApi from 'service_portal_api';
+let defaultClient = ServicePortalApi.ApiClient.instance;
+
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+
+let apiInstance = new ServicePortalApi.AdminsApi();
+let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
+apiInstance.destroyPortfolioItem(portfolioItemId).then(() => {
+  console.log('API called successfully.');
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **portfolioItemId** | **String**| The Portfolio Item ID | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: Not defined
 
 <a name="editPortfolio"></a>

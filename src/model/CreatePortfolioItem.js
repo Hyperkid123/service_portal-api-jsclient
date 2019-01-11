@@ -23,7 +23,7 @@ class CreatePortfolioItem {
      * Constructs a new <code>CreatePortfolioItem</code>.
      * @alias module:model/CreatePortfolioItem
      */
-    constructor() {
+    constructor() { 
         
         CreatePortfolioItem.initialize(this);
     }
@@ -33,7 +33,7 @@ class CreatePortfolioItem {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj) {
+    static initialize(obj) { 
     }
 
     /**

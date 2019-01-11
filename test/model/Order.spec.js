@@ -90,12 +90,6 @@
       //expect(instance).to.be();
     });
 
-    it('should have the property orderItems (base name: "order_items")', function() {
-      // uncomment below and update the code to test the property orderItems
-      //var instane = new ServicePortalApi.Order();
-      //expect(instance).to.be();
-    });
-
   });
 
 }));
