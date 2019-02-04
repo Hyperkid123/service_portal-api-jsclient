@@ -1,6 +1,6 @@
 {
   "name": "@manageiq/service-portal-api",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "This is a API to fetch and order catalog items from different cloud sources",
   "license": "Apache 2.0",
   "main": "./dist/main.js",
