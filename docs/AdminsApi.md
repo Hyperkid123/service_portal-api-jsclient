@@ -12,9 +12,10 @@ Method | HTTP request | Description
 [**destroyPortfolioItem**](AdminsApi.md#destroyPortfolioItem) | **DELETE** /portfolio_items/{portfolio_item_id} | Delete an existing portfolio item
 [**editPortfolio**](AdminsApi.md#editPortfolio) | **PATCH** /portfolios/{portfolio_id} | Edit an existing portfolio
 [**fetchPlansWithPortfolioItemId**](AdminsApi.md#fetchPlansWithPortfolioItemId) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
-[**fetchPortfolioItemFromPortfolio**](AdminsApi.md#fetchPortfolioItemFromPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items/{portfolio_item_id} | Fetch a single portfolio item from a specific portfolio
+[**fetchPortfolioItemWithId**](AdminsApi.md#fetchPortfolioItemWithId) | **GET** /portfolio_items/{portfolio_item_id} | Fetch a specific Portfolio Item
 [**fetchPortfolioItemsWithPortfolio**](AdminsApi.md#fetchPortfolioItemsWithPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items | Fetch all portfolio items from a specific portfolio
 [**fetchPortfolioWithId**](AdminsApi.md#fetchPortfolioWithId) | **GET** /portfolios/{portfolio_id} | Fetch a specific Portfolio
+[**fetchProviderControlParameters**](AdminsApi.md#fetchProviderControlParameters) | **GET** /portfolio_items/{portfolio_item_id}/provider_control_parameters | Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
 [**listOrderItem**](AdminsApi.md#listOrderItem) | **GET** /orders/{order_id}/items/{order_item_id} | Get an individual order item from a given order
 [**listOrderItems**](AdminsApi.md#listOrderItems) | **GET** /orders/{order_id}/items | Get a list of items in a given order
 [**listOrders**](AdminsApi.md#listOrders) | **GET** /orders | Get a list of orders
@@ -27,7 +28,7 @@ Method | HTTP request | Description
 
 <a name="addPortfolio"></a>
 # **addPortfolio**
-> Portfolio addPortfolio(portfolio)
+> Portfolio addPortfolio(body)
 
 API to add a new portfolio
 
@@ -50,8 +51,10 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
-let portfolio = new ServicePortalApi.Portfolio(); // Portfolio | 
-apiInstance.addPortfolio(portfolio).then((data) => {
+
+let body = new ServicePortalApi.Portfolio(); // Portfolio | 
+
+apiInstance.addPortfolio(body).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -63,7 +66,7 @@ apiInstance.addPortfolio(portfolio).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **portfolio** | [**Portfolio**](Portfolio.md)|  | 
+ **body** | [**Portfolio**](Portfolio.md)|  | 
 
 ### Return type
 
@@ -80,7 +83,7 @@ Name | Type | Description  | Notes
 
 <a name="addPortfolioItem"></a>
 # **addPortfolioItem**
-> PortfolioItem addPortfolioItem(createPortfolioItem)
+> PortfolioItem addPortfolioItem(body)
 
 API to add a new portfolio item
 
@@ -103,8 +106,10 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
-let createPortfolioItem = new ServicePortalApi.CreatePortfolioItem(); // CreatePortfolioItem | 
-apiInstance.addPortfolioItem(createPortfolioItem).then((data) => {
+
+let body = new ServicePortalApi.CreatePortfolioItem(); // CreatePortfolioItem | 
+
+apiInstance.addPortfolioItem(body).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -116,7 +121,7 @@ apiInstance.addPortfolioItem(createPortfolioItem).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createPortfolioItem** | [**CreatePortfolioItem**](CreatePortfolioItem.md)|  | 
+ **body** | [**CreatePortfolioItem**](CreatePortfolioItem.md)|  | 
 
 ### Return type
 
@@ -133,7 +138,7 @@ Name | Type | Description  | Notes
 
 <a name="addPortfolioItemToPortfolio"></a>
 # **addPortfolioItemToPortfolio**
-> addPortfolioItemToPortfolio(portfolioId, addPortfolioItem)
+> addPortfolioItemToPortfolio(portfolioId, body)
 
 Add Portfolio item to a portfolio
 
@@ -156,9 +161,12 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
+
 let portfolioId = "portfolioId_example"; // String | The Portfolio ID
-let addPortfolioItem = new ServicePortalApi.AddPortfolioItem(); // AddPortfolioItem | 
-apiInstance.addPortfolioItemToPortfolio(portfolioId, addPortfolioItem).then(() => {
+
+let body = new ServicePortalApi.AddPortfolioItem(); // AddPortfolioItem | 
+
+apiInstance.addPortfolioItemToPortfolio(portfolioId, body).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -171,7 +179,7 @@ apiInstance.addPortfolioItemToPortfolio(portfolioId, addPortfolioItem).then(() =
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **portfolioId** | **String**| The Portfolio ID | 
- **addPortfolioItem** | [**AddPortfolioItem**](AddPortfolioItem.md)|  | 
+ **body** | [**AddPortfolioItem**](AddPortfolioItem.md)|  | 
 
 ### Return type
 
@@ -184,11 +192,11 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 <a name="addToOrder"></a>
 # **addToOrder**
-> addToOrder(orderId, orderItem)
+> addToOrder(orderIditem)
 
 Add an Order Item to the Order in Pending State
 
@@ -211,9 +219,12 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
+
 let orderId = "orderId_example"; // String | The Order ID
-let orderItem = new ServicePortalApi.OrderItem(); // OrderItem | 
-apiInstance.addToOrder(orderId, orderItem).then(() => {
+
+let item = new ServicePortalApi.OrderItem(); // OrderItem | 
+
+apiInstance.addToOrder(orderIditem).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -226,7 +237,7 @@ apiInstance.addToOrder(orderId, orderItem).then(() => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **String**| The Order ID | 
- **orderItem** | [**OrderItem**](OrderItem.md)|  | 
+ **item** | [**OrderItem**](OrderItem.md)|  | 
 
 ### Return type
 
@@ -239,11 +250,11 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 <a name="destroyPortfolio"></a>
 # **destroyPortfolio**
-> Portfolio destroyPortfolio(portfolioId)
+> Portfolio destroyPortfolio(portfolioId, )
 
 Delete an existing portfolio
 
@@ -266,8 +277,10 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
+
 let portfolioId = "portfolioId_example"; // String | The Portfolio ID
-apiInstance.destroyPortfolio(portfolioId).then((data) => {
+
+apiInstance.destroyPortfolio(portfolioId, ).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -319,7 +332,9 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
+
 let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
+
 apiInstance.destroyPortfolioItem(portfolioItemId).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -345,11 +360,11 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 <a name="editPortfolio"></a>
 # **editPortfolio**
-> Portfolio editPortfolio(portfolioId, portfolio)
+> Portfolio editPortfolio(portfolioId, body)
 
 Edit an existing portfolio
 
@@ -372,9 +387,12 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
+
 let portfolioId = "portfolioId_example"; // String | The Portfolio ID
-let portfolio = new ServicePortalApi.Portfolio(); // Portfolio | 
-apiInstance.editPortfolio(portfolioId, portfolio).then((data) => {
+
+let body = new ServicePortalApi.Portfolio(); // Portfolio | 
+
+apiInstance.editPortfolio(portfolioId, body).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -387,7 +405,7 @@ apiInstance.editPortfolio(portfolioId, portfolio).then((data) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **portfolioId** | **String**| The Portfolio ID | 
- **portfolio** | [**Portfolio**](Portfolio.md)|  | 
+ **body** | [**Portfolio**](Portfolio.md)|  | 
 
 ### Return type
 
@@ -427,7 +445,9 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
+
 let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
+
 apiInstance.fetchPlansWithPortfolioItemId(portfolioItemId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -455,13 +475,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="fetchPortfolioItemFromPortfolio"></a>
-# **fetchPortfolioItemFromPortfolio**
-> PortfolioItem fetchPortfolioItemFromPortfolio(portfolioId, portfolioItemId)
+<a name="fetchPortfolioItemWithId"></a>
+# **fetchPortfolioItemWithId**
+> PortfolioItem fetchPortfolioItemWithId(portfolioItemId)
 
-Fetch a single portfolio item from a specific portfolio
+Fetch a specific Portfolio Item
 
-By passing in the portfolio id and portfolio_item_id you can fetch the portfolio items in the portfolio. 
+By passing in the portfolio_item_id you can fetch a specific portfolio item 
 
 ### Example
 ```javascript
@@ -480,9 +500,10 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
-let portfolioId = "portfolioId_example"; // String | The Portfolio ID
+
 let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
-apiInstance.fetchPortfolioItemFromPortfolio(portfolioId, portfolioItemId).then((data) => {
+
+apiInstance.fetchPortfolioItemWithId(portfolioItemId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -494,7 +515,6 @@ apiInstance.fetchPortfolioItemFromPortfolio(portfolioId, portfolioItemId).then((
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **portfolioId** | **String**| The Portfolio ID | 
  **portfolioItemId** | **String**| The Portfolio Item ID | 
 
 ### Return type
@@ -512,7 +532,7 @@ Name | Type | Description  | Notes
 
 <a name="fetchPortfolioItemsWithPortfolio"></a>
 # **fetchPortfolioItemsWithPortfolio**
-> [PortfolioItem] fetchPortfolioItemsWithPortfolio(portfolioId)
+> [PortfolioItem] fetchPortfolioItemsWithPortfolio(portfolioId, )
 
 Fetch all portfolio items from a specific portfolio
 
@@ -535,8 +555,10 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
+
 let portfolioId = "portfolioId_example"; // String | The Portfolio ID
-apiInstance.fetchPortfolioItemsWithPortfolio(portfolioId).then((data) => {
+
+apiInstance.fetchPortfolioItemsWithPortfolio(portfolioId, ).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -565,7 +587,7 @@ Name | Type | Description  | Notes
 
 <a name="fetchPortfolioWithId"></a>
 # **fetchPortfolioWithId**
-> Portfolio fetchPortfolioWithId(portfolioId)
+> Portfolio fetchPortfolioWithId(portfolioId, )
 
 Fetch a specific Portfolio
 
@@ -588,8 +610,10 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
+
 let portfolioId = "portfolioId_example"; // String | The Portfolio ID
-apiInstance.fetchPortfolioWithId(portfolioId).then((data) => {
+
+apiInstance.fetchPortfolioWithId(portfolioId, ).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -616,9 +640,64 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="fetchProviderControlParameters"></a>
+# **fetchProviderControlParameters**
+> ProviderControlParameters fetchProviderControlParameters(portfolioItemId)
+
+Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
+
+Fetch provider control parameters for a portfolio item 
+
+### Example
+```javascript
+import ServicePortalApi from 'service_portal_api';
+let defaultClient = ServicePortalApi.ApiClient.instance;
+
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+
+let apiInstance = new ServicePortalApi.AdminsApi();
+
+let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
+
+apiInstance.fetchProviderControlParameters(portfolioItemId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **portfolioItemId** | **String**| The Portfolio Item ID | 
+
+### Return type
+
+[**ProviderControlParameters**](ProviderControlParameters.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="listOrderItem"></a>
 # **listOrderItem**
-> OrderItem listOrderItem(orderId, orderItemId)
+> OrderItem listOrderItem(orderIdorderItemId)
 
 Get an individual order item from a given order
 
@@ -641,9 +720,12 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
+
 let orderId = "orderId_example"; // String | The Order ID
+
 let orderItemId = "orderItemId_example"; // String | The Order Item ID
-apiInstance.listOrderItem(orderId, orderItemId).then((data) => {
+
+apiInstance.listOrderItem(orderIdorderItemId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -696,7 +778,9 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
+
 let orderId = "orderId_example"; // String | The Order ID
+
 apiInstance.listOrderItems(orderId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -819,7 +903,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="listPortfolios"></a>
@@ -868,7 +952,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="listProgressMessages"></a>
@@ -896,7 +980,9 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
+
 let orderItemId = "orderItemId_example"; // String | The Order Item ID
+
 apiInstance.listProgressMessages(orderItemId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -998,7 +1084,9 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
+
 let orderId = "orderId_example"; // String | The Order ID
+
 apiInstance.submitOrder(orderId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
