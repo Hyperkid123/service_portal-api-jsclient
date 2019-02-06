@@ -14,18 +14,18 @@
 import ApiClient from '../ApiClient';
 
 /**
- * The Organization model module.
- * @module model/Organization
+ * The CollectionMetadata model module.
+ * @module model/CollectionMetadata
  * @version 0.1.0
  */
-class Organization {
+class CollectionMetadata {
     /**
-     * Constructs a new <code>Organization</code>.
-     * @alias module:model/Organization
+     * Constructs a new <code>CollectionMetadata</code>.
+     * @alias module:model/CollectionMetadata
      */
     constructor() { 
         
-        Organization.initialize(this);
+        CollectionMetadata.initialize(this);
     }
 
     /**
@@ -37,18 +37,18 @@ class Organization {
     }
 
     /**
-     * Constructs a <code>Organization</code> from a plain JavaScript object, optionally creating a new instance.
+     * Constructs a <code>CollectionMetadata</code> from a plain JavaScript object, optionally creating a new instance.
      * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
      * @param {Object} data The plain JavaScript object bearing properties of interest.
-     * @param {module:model/Organization} obj Optional instance to populate.
-     * @return {module:model/Organization} The populated <code>Organization</code> instance.
+     * @param {module:model/CollectionMetadata} obj Optional instance to populate.
+     * @return {module:model/CollectionMetadata} The populated <code>CollectionMetadata</code> instance.
      */
     static constructFromObject(data, obj) {
         if (data) {
-            obj = obj || new Organization();
+            obj = obj || new CollectionMetadata();
 
-            if (data.hasOwnProperty('id')) {
-                obj['id'] = ApiClient.convertToType(data['id'], 'String');
+            if (data.hasOwnProperty('count')) {
+                obj['count'] = ApiClient.convertToType(data['count'], 'Number');
             }
         }
         return obj;
@@ -58,14 +58,15 @@ class Organization {
 }
 
 /**
- * @member {String} id
+ * This is the total number of items in the result set, of which only a subset is returned defined by the QueryLimit parameter
+ * @member {Number} count
  */
-Organization.prototype['id'] = undefined;
+CollectionMetadata.prototype['count'] = undefined;
 
 
 
 
 
 
-export default Organization;
+export default CollectionMetadata;
 
