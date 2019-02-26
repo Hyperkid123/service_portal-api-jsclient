@@ -81,7 +81,7 @@ export default class UsersApi {
       let returnType = null;
 
       return this.apiClient.callApi(
-        '/orders/{order_id}/items', 'POST',
+        '/orders/{order_id}/order_items', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -96,108 +96,6 @@ export default class UsersApi {
      */
     addToOrder(orderId, orderItem) {
       return this.addToOrderWithHttpInfo(orderId, orderItem)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
-     * Fetch all service plans for a portfolio item 
-     * @param {String} portfolioItemId The Portfolio Item ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/ServicePlan>} and HTTP response
-     */
-    fetchPlansWithPortfolioItemIdWithHttpInfo(portfolioItemId) {
-      let postBody = null;
-
-      // verify the required parameter 'portfolioItemId' is set
-      if (portfolioItemId === undefined || portfolioItemId === null) {
-        throw new Error("Missing the required parameter 'portfolioItemId' when calling fetchPlansWithPortfolioItemId");
-      }
-
-
-      let pathParams = {
-        'portfolio_item_id': portfolioItemId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['APIKeyAuth', 'BasicAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = [ServicePlan];
-
-      return this.apiClient.callApi(
-        '/portfolio_items/{portfolio_item_id}/service_plans', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
-     * Fetch all service plans for a portfolio item 
-     * @param {String} portfolioItemId The Portfolio Item ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/ServicePlan>}
-     */
-    fetchPlansWithPortfolioItemId(portfolioItemId) {
-      return this.fetchPlansWithPortfolioItemIdWithHttpInfo(portfolioItemId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Fetch a specific Portfolio Item
-     * By passing in the portfolio_item_id you can fetch a specific portfolio item 
-     * @param {String} portfolioItemId The Portfolio Item ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PortfolioItem} and HTTP response
-     */
-    fetchPortfolioItemWithIdWithHttpInfo(portfolioItemId) {
-      let postBody = null;
-
-      // verify the required parameter 'portfolioItemId' is set
-      if (portfolioItemId === undefined || portfolioItemId === null) {
-        throw new Error("Missing the required parameter 'portfolioItemId' when calling fetchPortfolioItemWithId");
-      }
-
-
-      let pathParams = {
-        'portfolio_item_id': portfolioItemId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['APIKeyAuth', 'BasicAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = PortfolioItem;
-
-      return this.apiClient.callApi(
-        '/portfolio_items/{portfolio_item_id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Fetch a specific Portfolio Item
-     * By passing in the portfolio_item_id you can fetch a specific portfolio item 
-     * @param {String} portfolioItemId The Portfolio Item ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PortfolioItem}
-     */
-    fetchPortfolioItemWithId(portfolioItemId) {
-      return this.fetchPortfolioItemWithIdWithHttpInfo(portfolioItemId)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
@@ -265,167 +163,6 @@ export default class UsersApi {
 
 
     /**
-     * Fetch a specific Portfolio
-     * By passing in the portfolio id you can fetch a specific portfolio. 
-     * @param {String} portfolioId The Portfolio ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Portfolio} and HTTP response
-     */
-    fetchPortfolioWithIdWithHttpInfo(portfolioId) {
-      let postBody = null;
-
-      // verify the required parameter 'portfolioId' is set
-      if (portfolioId === undefined || portfolioId === null) {
-        throw new Error("Missing the required parameter 'portfolioId' when calling fetchPortfolioWithId");
-      }
-
-
-      let pathParams = {
-        'portfolio_id': portfolioId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['APIKeyAuth', 'BasicAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = Portfolio;
-
-      return this.apiClient.callApi(
-        '/portfolios/{portfolio_id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Fetch a specific Portfolio
-     * By passing in the portfolio id you can fetch a specific portfolio. 
-     * @param {String} portfolioId The Portfolio ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Portfolio}
-     */
-    fetchPortfolioWithId(portfolioId) {
-      return this.fetchPortfolioWithIdWithHttpInfo(portfolioId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
-     * Fetch provider control parameters for a portfolio item 
-     * @param {String} portfolioItemId The Portfolio Item ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ProviderControlParameters} and HTTP response
-     */
-    fetchProviderControlParametersWithHttpInfo(portfolioItemId) {
-      let postBody = null;
-
-      // verify the required parameter 'portfolioItemId' is set
-      if (portfolioItemId === undefined || portfolioItemId === null) {
-        throw new Error("Missing the required parameter 'portfolioItemId' when calling fetchProviderControlParameters");
-      }
-
-
-      let pathParams = {
-        'portfolio_item_id': portfolioItemId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['APIKeyAuth', 'BasicAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = ProviderControlParameters;
-
-      return this.apiClient.callApi(
-        '/portfolio_items/{portfolio_item_id}/provider_control_parameters', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
-     * Fetch provider control parameters for a portfolio item 
-     * @param {String} portfolioItemId The Portfolio Item ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProviderControlParameters}
-     */
-    fetchProviderControlParameters(portfolioItemId) {
-      return this.fetchProviderControlParametersWithHttpInfo(portfolioItemId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
-     * Get an individual order item from a given order
-     * Get an order item associated with an order. 
-     * @param {String} orderId The Order ID
-     * @param {String} orderItemId The Order Item ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/OrderItem} and HTTP response
-     */
-    listOrderItemWithHttpInfo(orderId, orderItemId) {
-      let postBody = null;
-
-      // verify the required parameter 'orderId' is set
-      if (orderId === undefined || orderId === null) {
-        throw new Error("Missing the required parameter 'orderId' when calling listOrderItem");
-      }
-
-      // verify the required parameter 'orderItemId' is set
-      if (orderItemId === undefined || orderItemId === null) {
-        throw new Error("Missing the required parameter 'orderItemId' when calling listOrderItem");
-      }
-
-
-      let pathParams = {
-        'order_id': orderId,
-        'order_item_id': orderItemId
-      };
-      let queryParams = {
-      };
-      let headerParams = {
-      };
-      let formParams = {
-      };
-
-      let authNames = ['APIKeyAuth', 'BasicAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = OrderItem;
-
-      return this.apiClient.callApi(
-        '/orders/{order_id}/items/{order_item_id}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType
-      );
-    }
-
-    /**
-     * Get an individual order item from a given order
-     * Get an order item associated with an order. 
-     * @param {String} orderId The Order ID
-     * @param {String} orderItemId The Order Item ID
-     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OrderItem}
-     */
-    listOrderItem(orderId, orderItemId) {
-      return this.listOrderItemWithHttpInfo(orderId, orderItemId)
-        .then(function(response_and_data) {
-          return response_and_data.data;
-        });
-    }
-
-
-    /**
      * Get a list of items in a given order
      * Get a list of items associated with an order. 
      * @param {String} orderId The Order ID
@@ -462,7 +199,7 @@ export default class UsersApi {
       let returnType = OrderItemsCollection;
 
       return this.apiClient.callApi(
-        '/orders/{order_id}/items', 'GET',
+        '/orders/{order_id}/order_items', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType
       );
@@ -695,6 +432,269 @@ export default class UsersApi {
      */
     listProgressMessages(orderItemId, opts) {
       return this.listProgressMessagesWithHttpInfo(orderItemId, opts)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
+     * Fetch provider control parameters for a portfolio item 
+     * @param {String} portfolioItemId The Portfolio Item ID
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/ProviderControlParameters} and HTTP response
+     */
+    listProviderControlParametersWithHttpInfo(portfolioItemId) {
+      let postBody = null;
+
+      // verify the required parameter 'portfolioItemId' is set
+      if (portfolioItemId === undefined || portfolioItemId === null) {
+        throw new Error("Missing the required parameter 'portfolioItemId' when calling listProviderControlParameters");
+      }
+
+
+      let pathParams = {
+        'portfolio_item_id': portfolioItemId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['APIKeyAuth', 'BasicAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ProviderControlParameters;
+
+      return this.apiClient.callApi(
+        '/portfolio_items/{portfolio_item_id}/provider_control_parameters', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
+     * Fetch provider control parameters for a portfolio item 
+     * @param {String} portfolioItemId The Portfolio Item ID
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/ProviderControlParameters}
+     */
+    listProviderControlParameters(portfolioItemId) {
+      return this.listProviderControlParametersWithHttpInfo(portfolioItemId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
+     * Fetch all service plans for a portfolio item 
+     * @param {String} portfolioItemId The Portfolio Item ID
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link Array.<module:model/ServicePlan>} and HTTP response
+     */
+    listServicePlansWithHttpInfo(portfolioItemId) {
+      let postBody = null;
+
+      // verify the required parameter 'portfolioItemId' is set
+      if (portfolioItemId === undefined || portfolioItemId === null) {
+        throw new Error("Missing the required parameter 'portfolioItemId' when calling listServicePlans");
+      }
+
+
+      let pathParams = {
+        'portfolio_item_id': portfolioItemId
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['APIKeyAuth', 'BasicAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = [ServicePlan];
+
+      return this.apiClient.callApi(
+        '/portfolio_items/{portfolio_item_id}/service_plans', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
+     * Fetch all service plans for a portfolio item 
+     * @param {String} portfolioItemId The Portfolio Item ID
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link Array.<module:model/ServicePlan>}
+     */
+    listServicePlans(portfolioItemId) {
+      return this.listServicePlansWithHttpInfo(portfolioItemId)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Get an individual order item from a given order
+     * Get an order item associated with an order. 
+     * @param {String} orderId The Order ID
+     * @param {String} id ID of the resource
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/OrderItem} and HTTP response
+     */
+    showOrderItemWithHttpInfo(orderId, id) {
+      let postBody = null;
+
+      // verify the required parameter 'orderId' is set
+      if (orderId === undefined || orderId === null) {
+        throw new Error("Missing the required parameter 'orderId' when calling showOrderItem");
+      }
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling showOrderItem");
+      }
+
+
+      let pathParams = {
+        'order_id': orderId,
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['APIKeyAuth', 'BasicAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = OrderItem;
+
+      return this.apiClient.callApi(
+        '/orders/{order_id}/order_items/{id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Get an individual order item from a given order
+     * Get an order item associated with an order. 
+     * @param {String} orderId The Order ID
+     * @param {String} id ID of the resource
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/OrderItem}
+     */
+    showOrderItem(orderId, id) {
+      return this.showOrderItemWithHttpInfo(orderId, id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Fetch a specific Portfolio
+     * By passing in the portfolio id you can fetch a specific portfolio. 
+     * @param {String} id ID of the resource
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/Portfolio} and HTTP response
+     */
+    showPortfolioWithHttpInfo(id) {
+      let postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling showPortfolio");
+      }
+
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['APIKeyAuth', 'BasicAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = Portfolio;
+
+      return this.apiClient.callApi(
+        '/portfolios/{id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Fetch a specific Portfolio
+     * By passing in the portfolio id you can fetch a specific portfolio. 
+     * @param {String} id ID of the resource
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/Portfolio}
+     */
+    showPortfolio(id) {
+      return this.showPortfolioWithHttpInfo(id)
+        .then(function(response_and_data) {
+          return response_and_data.data;
+        });
+    }
+
+
+    /**
+     * Fetch a specific Portfolio Item
+     * By passing in the portfolio_item_id you can fetch a specific portfolio item 
+     * @param {String} id ID of the resource
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with an object containing data of type {@link module:model/PortfolioItem} and HTTP response
+     */
+    showPortfolioItemWithHttpInfo(id) {
+      let postBody = null;
+
+      // verify the required parameter 'id' is set
+      if (id === undefined || id === null) {
+        throw new Error("Missing the required parameter 'id' when calling showPortfolioItem");
+      }
+
+
+      let pathParams = {
+        'id': id
+      };
+      let queryParams = {
+      };
+      let headerParams = {
+      };
+      let formParams = {
+      };
+
+      let authNames = ['APIKeyAuth', 'BasicAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = PortfolioItem;
+
+      return this.apiClient.callApi(
+        '/portfolio_items/{id}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType
+      );
+    }
+
+    /**
+     * Fetch a specific Portfolio Item
+     * By passing in the portfolio_item_id you can fetch a specific portfolio item 
+     * @param {String} id ID of the resource
+     * @return {Promise} a {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/PortfolioItem}
+     */
+    showPortfolioItem(id) {
+      return this.showPortfolioItemWithHttpInfo(id)
         .then(function(response_and_data) {
           return response_and_data.data;
         });
