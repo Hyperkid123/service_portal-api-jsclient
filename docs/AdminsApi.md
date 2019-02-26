@@ -4,133 +4,27 @@ All URIs are relative to *https://localhost/r/insights/platform/service-portal*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addPortfolio**](AdminsApi.md#addPortfolio) | **POST** /portfolios | API to add a new portfolio
-[**addPortfolioItem**](AdminsApi.md#addPortfolioItem) | **POST** /portfolio_items | API to add a new portfolio item
 [**addPortfolioItemToPortfolio**](AdminsApi.md#addPortfolioItemToPortfolio) | **POST** /portfolios/{portfolio_id}/portfolio_items | Add Portfolio item to a portfolio
-[**addToOrder**](AdminsApi.md#addToOrder) | **POST** /orders/{order_id}/items | Add an Order Item to the Order in Pending State
-[**destroyPortfolio**](AdminsApi.md#destroyPortfolio) | **DELETE** /portfolios/{portfolio_id} | Delete an existing portfolio
-[**destroyPortfolioItem**](AdminsApi.md#destroyPortfolioItem) | **DELETE** /portfolio_items/{portfolio_item_id} | Delete an existing portfolio item
-[**editPortfolio**](AdminsApi.md#editPortfolio) | **PATCH** /portfolios/{portfolio_id} | Edit an existing portfolio
-[**fetchPlansWithPortfolioItemId**](AdminsApi.md#fetchPlansWithPortfolioItemId) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
-[**fetchPortfolioItemWithId**](AdminsApi.md#fetchPortfolioItemWithId) | **GET** /portfolio_items/{portfolio_item_id} | Fetch a specific Portfolio Item
+[**addToOrder**](AdminsApi.md#addToOrder) | **POST** /orders/{order_id}/order_items | Add an Order Item to the Order in Pending State
+[**createOrder**](AdminsApi.md#createOrder) | **POST** /orders | Create a new order
+[**createPortfolio**](AdminsApi.md#createPortfolio) | **POST** /portfolios | API to add a new portfolio
+[**createPortfolioItem**](AdminsApi.md#createPortfolioItem) | **POST** /portfolio_items | API to add a new portfolio item
+[**destroyPortfolio**](AdminsApi.md#destroyPortfolio) | **DELETE** /portfolios/{id} | Delete an existing portfolio
+[**destroyPortfolioItem**](AdminsApi.md#destroyPortfolioItem) | **DELETE** /portfolio_items/{id} | Delete an existing portfolio item
 [**fetchPortfolioItemsWithPortfolio**](AdminsApi.md#fetchPortfolioItemsWithPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items | Fetch all portfolio items from a specific portfolio
-[**fetchPortfolioWithId**](AdminsApi.md#fetchPortfolioWithId) | **GET** /portfolios/{portfolio_id} | Fetch a specific Portfolio
-[**fetchProviderControlParameters**](AdminsApi.md#fetchProviderControlParameters) | **GET** /portfolio_items/{portfolio_item_id}/provider_control_parameters | Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
-[**listOrderItem**](AdminsApi.md#listOrderItem) | **GET** /orders/{order_id}/items/{order_item_id} | Get an individual order item from a given order
-[**listOrderItems**](AdminsApi.md#listOrderItems) | **GET** /orders/{order_id}/items | Get a list of items in a given order
+[**listOrderItems**](AdminsApi.md#listOrderItems) | **GET** /orders/{order_id}/order_items | Get a list of items in a given order
 [**listOrders**](AdminsApi.md#listOrders) | **GET** /orders | Get a list of orders
 [**listPortfolioItems**](AdminsApi.md#listPortfolioItems) | **GET** /portfolio_items | API to list all portfolio items
 [**listPortfolios**](AdminsApi.md#listPortfolios) | **GET** /portfolios | API to list portfolios
 [**listProgressMessages**](AdminsApi.md#listProgressMessages) | **GET** /order_items/{order_item_id}/progress_messages | Get a list of progress messages in an item
-[**newOrder**](AdminsApi.md#newOrder) | **POST** /orders | Create a new order
-[**submitOrder**](AdminsApi.md#submitOrder) | **POST** /orders/{order_id} | Submit the given order
+[**listProviderControlParameters**](AdminsApi.md#listProviderControlParameters) | **GET** /portfolio_items/{portfolio_item_id}/provider_control_parameters | Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
+[**listServicePlans**](AdminsApi.md#listServicePlans) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
+[**showOrderItem**](AdminsApi.md#showOrderItem) | **GET** /orders/{order_id}/order_items/{id} | Get an individual order item from a given order
+[**showPortfolio**](AdminsApi.md#showPortfolio) | **GET** /portfolios/{id} | Fetch a specific Portfolio
+[**showPortfolioItem**](AdminsApi.md#showPortfolioItem) | **GET** /portfolio_items/{id} | Fetch a specific Portfolio Item
+[**submitOrder**](AdminsApi.md#submitOrder) | **POST** /orders/{order_id}/submit_order | Submit the given order
+[**updatePortfolio**](AdminsApi.md#updatePortfolio) | **PATCH** /portfolios/{id} | Edit an existing portfolio
 
-
-<a name="addPortfolio"></a>
-# **addPortfolio**
-> Portfolio addPortfolio(portfolio)
-
-API to add a new portfolio
-
-Returns the added portfolio object 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure API key authorization: APIKeyAuth
-let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
-APIKeyAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//APIKeyAuth.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: BasicAuth
-let BasicAuth = defaultClient.authentications['BasicAuth'];
-BasicAuth.username = 'YOUR USERNAME';
-BasicAuth.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-let portfolio = new ServicePortalApi.Portfolio(); // Portfolio | 
-apiInstance.addPortfolio(portfolio).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **portfolio** | [**Portfolio**](Portfolio.md)|  | 
-
-### Return type
-
-[**Portfolio**](Portfolio.md)
-
-### Authorization
-
-[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="addPortfolioItem"></a>
-# **addPortfolioItem**
-> PortfolioItem addPortfolioItem(createPortfolioItem)
-
-API to add a new portfolio item
-
-This API would connect to the Topology Service to fetch the name and description of the service offering. Returns the added portfolio item object 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure API key authorization: APIKeyAuth
-let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
-APIKeyAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//APIKeyAuth.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: BasicAuth
-let BasicAuth = defaultClient.authentications['BasicAuth'];
-BasicAuth.username = 'YOUR USERNAME';
-BasicAuth.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-let createPortfolioItem = new ServicePortalApi.CreatePortfolioItem(); // CreatePortfolioItem | 
-apiInstance.addPortfolioItem(createPortfolioItem).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createPortfolioItem** | [**CreatePortfolioItem**](CreatePortfolioItem.md)|  | 
-
-### Return type
-
-[**PortfolioItem**](PortfolioItem.md)
-
-### Authorization
-
-[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
 
 <a name="addPortfolioItemToPortfolio"></a>
 # **addPortfolioItemToPortfolio**
@@ -242,9 +136,164 @@ null (empty response body)
  - **Content-Type**: application/json
  - **Accept**: Not defined
 
+<a name="createOrder"></a>
+# **createOrder**
+> Order createOrder()
+
+Create a new order
+
+Create a new order. 
+
+### Example
+```javascript
+import ServicePortalApi from 'service_portal_api';
+let defaultClient = ServicePortalApi.ApiClient.instance;
+
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+
+let apiInstance = new ServicePortalApi.AdminsApi();
+apiInstance.createOrder().then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**Order**](Order.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="createPortfolio"></a>
+# **createPortfolio**
+> Portfolio createPortfolio(portfolio)
+
+API to add a new portfolio
+
+Returns the added portfolio object 
+
+### Example
+```javascript
+import ServicePortalApi from 'service_portal_api';
+let defaultClient = ServicePortalApi.ApiClient.instance;
+
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+
+let apiInstance = new ServicePortalApi.AdminsApi();
+let portfolio = new ServicePortalApi.Portfolio(); // Portfolio | 
+apiInstance.createPortfolio(portfolio).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **portfolio** | [**Portfolio**](Portfolio.md)|  | 
+
+### Return type
+
+[**Portfolio**](Portfolio.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="createPortfolioItem"></a>
+# **createPortfolioItem**
+> PortfolioItem createPortfolioItem(createPortfolioItem)
+
+API to add a new portfolio item
+
+This API would connect to the Topology Service to fetch the name and description of the service offering. Returns the added portfolio item object 
+
+### Example
+```javascript
+import ServicePortalApi from 'service_portal_api';
+let defaultClient = ServicePortalApi.ApiClient.instance;
+
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+
+let apiInstance = new ServicePortalApi.AdminsApi();
+let createPortfolioItem = new ServicePortalApi.CreatePortfolioItem(); // CreatePortfolioItem | 
+apiInstance.createPortfolioItem(createPortfolioItem).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createPortfolioItem** | [**CreatePortfolioItem**](CreatePortfolioItem.md)|  | 
+
+### Return type
+
+[**PortfolioItem**](PortfolioItem.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="destroyPortfolio"></a>
 # **destroyPortfolio**
-> Portfolio destroyPortfolio(portfolioId)
+> destroyPortfolio(id)
 
 Delete an existing portfolio
 
@@ -267,9 +316,9 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
-let portfolioId = "portfolioId_example"; // String | The Portfolio ID
-apiInstance.destroyPortfolio(portfolioId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
+let id = "id_example"; // String | ID of the resource
+apiInstance.destroyPortfolio(id).then(() => {
+  console.log('API called successfully.');
 }, (error) => {
   console.error(error);
 });
@@ -280,11 +329,11 @@ apiInstance.destroyPortfolio(portfolioId).then((data) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **portfolioId** | **String**| The Portfolio ID | 
+ **id** | **String**| ID of the resource | 
 
 ### Return type
 
-[**Portfolio**](Portfolio.md)
+null (empty response body)
 
 ### Authorization
 
@@ -293,11 +342,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: Not defined
 
 <a name="destroyPortfolioItem"></a>
 # **destroyPortfolioItem**
-> destroyPortfolioItem(portfolioItemId)
+> destroyPortfolioItem(id)
 
 Delete an existing portfolio item
 
@@ -320,8 +369,8 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
-let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
-apiInstance.destroyPortfolioItem(portfolioItemId).then(() => {
+let id = "id_example"; // String | ID of the resource
+apiInstance.destroyPortfolioItem(id).then(() => {
   console.log('API called successfully.');
 }, (error) => {
   console.error(error);
@@ -333,7 +382,7 @@ apiInstance.destroyPortfolioItem(portfolioItemId).then(() => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **portfolioItemId** | **String**| The Portfolio Item ID | 
+ **id** | **String**| ID of the resource | 
 
 ### Return type
 
@@ -347,167 +396,6 @@ null (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: Not defined
-
-<a name="editPortfolio"></a>
-# **editPortfolio**
-> Portfolio editPortfolio(portfolioId, portfolio)
-
-Edit an existing portfolio
-
-Returns the edited portfolio object 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure API key authorization: APIKeyAuth
-let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
-APIKeyAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//APIKeyAuth.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: BasicAuth
-let BasicAuth = defaultClient.authentications['BasicAuth'];
-BasicAuth.username = 'YOUR USERNAME';
-BasicAuth.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-let portfolioId = "portfolioId_example"; // String | The Portfolio ID
-let portfolio = new ServicePortalApi.Portfolio(); // Portfolio | 
-apiInstance.editPortfolio(portfolioId, portfolio).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **portfolioId** | **String**| The Portfolio ID | 
- **portfolio** | [**Portfolio**](Portfolio.md)|  | 
-
-### Return type
-
-[**Portfolio**](Portfolio.md)
-
-### Authorization
-
-[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="fetchPlansWithPortfolioItemId"></a>
-# **fetchPlansWithPortfolioItemId**
-> [ServicePlan] fetchPlansWithPortfolioItemId(portfolioItemId)
-
-Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
-
-Fetch all service plans for a portfolio item 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure API key authorization: APIKeyAuth
-let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
-APIKeyAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//APIKeyAuth.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: BasicAuth
-let BasicAuth = defaultClient.authentications['BasicAuth'];
-BasicAuth.username = 'YOUR USERNAME';
-BasicAuth.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
-apiInstance.fetchPlansWithPortfolioItemId(portfolioItemId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **portfolioItemId** | **String**| The Portfolio Item ID | 
-
-### Return type
-
-[**[ServicePlan]**](ServicePlan.md)
-
-### Authorization
-
-[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="fetchPortfolioItemWithId"></a>
-# **fetchPortfolioItemWithId**
-> PortfolioItem fetchPortfolioItemWithId(portfolioItemId)
-
-Fetch a specific Portfolio Item
-
-By passing in the portfolio_item_id you can fetch a specific portfolio item 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure API key authorization: APIKeyAuth
-let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
-APIKeyAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//APIKeyAuth.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: BasicAuth
-let BasicAuth = defaultClient.authentications['BasicAuth'];
-BasicAuth.username = 'YOUR USERNAME';
-BasicAuth.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
-apiInstance.fetchPortfolioItemWithId(portfolioItemId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **portfolioItemId** | **String**| The Portfolio Item ID | 
-
-### Return type
-
-[**PortfolioItem**](PortfolioItem.md)
-
-### Authorization
-
-[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
 
 <a name="fetchPortfolioItemsWithPortfolio"></a>
 # **fetchPortfolioItemsWithPortfolio**
@@ -558,167 +446,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PortfolioItemsCollection**](PortfolioItemsCollection.md)
-
-### Authorization
-
-[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="fetchPortfolioWithId"></a>
-# **fetchPortfolioWithId**
-> Portfolio fetchPortfolioWithId(portfolioId)
-
-Fetch a specific Portfolio
-
-By passing in the portfolio id you can fetch a specific portfolio. 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure API key authorization: APIKeyAuth
-let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
-APIKeyAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//APIKeyAuth.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: BasicAuth
-let BasicAuth = defaultClient.authentications['BasicAuth'];
-BasicAuth.username = 'YOUR USERNAME';
-BasicAuth.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-let portfolioId = "portfolioId_example"; // String | The Portfolio ID
-apiInstance.fetchPortfolioWithId(portfolioId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **portfolioId** | **String**| The Portfolio ID | 
-
-### Return type
-
-[**Portfolio**](Portfolio.md)
-
-### Authorization
-
-[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="fetchProviderControlParameters"></a>
-# **fetchProviderControlParameters**
-> ProviderControlParameters fetchProviderControlParameters(portfolioItemId)
-
-Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
-
-Fetch provider control parameters for a portfolio item 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure API key authorization: APIKeyAuth
-let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
-APIKeyAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//APIKeyAuth.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: BasicAuth
-let BasicAuth = defaultClient.authentications['BasicAuth'];
-BasicAuth.username = 'YOUR USERNAME';
-BasicAuth.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
-apiInstance.fetchProviderControlParameters(portfolioItemId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **portfolioItemId** | **String**| The Portfolio Item ID | 
-
-### Return type
-
-[**ProviderControlParameters**](ProviderControlParameters.md)
-
-### Authorization
-
-[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="listOrderItem"></a>
-# **listOrderItem**
-> OrderItem listOrderItem(orderId, orderItemId)
-
-Get an individual order item from a given order
-
-Get an order item associated with an order. 
-
-### Example
-```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
-
-// Configure API key authorization: APIKeyAuth
-let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
-APIKeyAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//APIKeyAuth.apiKeyPrefix = 'Token';
-
-// Configure HTTP basic authorization: BasicAuth
-let BasicAuth = defaultClient.authentications['BasicAuth'];
-BasicAuth.username = 'YOUR USERNAME';
-BasicAuth.password = 'YOUR PASSWORD';
-
-let apiInstance = new ServicePortalApi.AdminsApi();
-let orderId = "orderId_example"; // String | The Order ID
-let orderItemId = "orderItemId_example"; // String | The Order Item ID
-apiInstance.listOrderItem(orderId, orderItemId).then((data) => {
-  console.log('API called successfully. Returned data: ' + data);
-}, (error) => {
-  console.error(error);
-});
-
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **orderId** | **String**| The Order ID | 
- **orderItemId** | **String**| The Order Item ID | 
-
-### Return type
-
-[**OrderItem**](OrderItem.md)
 
 ### Authorization
 
@@ -1018,13 +745,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="newOrder"></a>
-# **newOrder**
-> Order newOrder()
+<a name="listProviderControlParameters"></a>
+# **listProviderControlParameters**
+> ProviderControlParameters listProviderControlParameters(portfolioItemId)
 
-Create a new order
+Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
 
-Create a new order. 
+Fetch provider control parameters for a portfolio item 
 
 ### Example
 ```javascript
@@ -1043,7 +770,8 @@ BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
 let apiInstance = new ServicePortalApi.AdminsApi();
-apiInstance.newOrder().then((data) => {
+let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
+apiInstance.listProviderControlParameters(portfolioItemId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
   console.error(error);
@@ -1052,11 +780,228 @@ apiInstance.newOrder().then((data) => {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **portfolioItemId** | **String**| The Portfolio Item ID | 
 
 ### Return type
 
-[**Order**](Order.md)
+[**ProviderControlParameters**](ProviderControlParameters.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="listServicePlans"></a>
+# **listServicePlans**
+> [ServicePlan] listServicePlans(portfolioItemId)
+
+Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
+
+Fetch all service plans for a portfolio item 
+
+### Example
+```javascript
+import ServicePortalApi from 'service_portal_api';
+let defaultClient = ServicePortalApi.ApiClient.instance;
+
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+
+let apiInstance = new ServicePortalApi.AdminsApi();
+let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
+apiInstance.listServicePlans(portfolioItemId).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **portfolioItemId** | **String**| The Portfolio Item ID | 
+
+### Return type
+
+[**[ServicePlan]**](ServicePlan.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="showOrderItem"></a>
+# **showOrderItem**
+> OrderItem showOrderItem(orderId, id)
+
+Get an individual order item from a given order
+
+Get an order item associated with an order. 
+
+### Example
+```javascript
+import ServicePortalApi from 'service_portal_api';
+let defaultClient = ServicePortalApi.ApiClient.instance;
+
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+
+let apiInstance = new ServicePortalApi.AdminsApi();
+let orderId = "orderId_example"; // String | The Order ID
+let id = "id_example"; // String | ID of the resource
+apiInstance.showOrderItem(orderId, id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderId** | **String**| The Order ID | 
+ **id** | **String**| ID of the resource | 
+
+### Return type
+
+[**OrderItem**](OrderItem.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="showPortfolio"></a>
+# **showPortfolio**
+> Portfolio showPortfolio(id)
+
+Fetch a specific Portfolio
+
+By passing in the portfolio id you can fetch a specific portfolio. 
+
+### Example
+```javascript
+import ServicePortalApi from 'service_portal_api';
+let defaultClient = ServicePortalApi.ApiClient.instance;
+
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+
+let apiInstance = new ServicePortalApi.AdminsApi();
+let id = "id_example"; // String | ID of the resource
+apiInstance.showPortfolio(id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| ID of the resource | 
+
+### Return type
+
+[**Portfolio**](Portfolio.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="showPortfolioItem"></a>
+# **showPortfolioItem**
+> PortfolioItem showPortfolioItem(id)
+
+Fetch a specific Portfolio Item
+
+By passing in the portfolio_item_id you can fetch a specific portfolio item 
+
+### Example
+```javascript
+import ServicePortalApi from 'service_portal_api';
+let defaultClient = ServicePortalApi.ApiClient.instance;
+
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+
+let apiInstance = new ServicePortalApi.AdminsApi();
+let id = "id_example"; // String | ID of the resource
+apiInstance.showPortfolioItem(id).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| ID of the resource | 
+
+### Return type
+
+[**PortfolioItem**](PortfolioItem.md)
 
 ### Authorization
 
@@ -1118,5 +1063,60 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="updatePortfolio"></a>
+# **updatePortfolio**
+> Portfolio updatePortfolio(id, portfolio)
+
+Edit an existing portfolio
+
+Returns the edited portfolio object 
+
+### Example
+```javascript
+import ServicePortalApi from 'service_portal_api';
+let defaultClient = ServicePortalApi.ApiClient.instance;
+
+// Configure API key authorization: APIKeyAuth
+let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
+APIKeyAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//APIKeyAuth.apiKeyPrefix = 'Token';
+
+// Configure HTTP basic authorization: BasicAuth
+let BasicAuth = defaultClient.authentications['BasicAuth'];
+BasicAuth.username = 'YOUR USERNAME';
+BasicAuth.password = 'YOUR PASSWORD';
+
+let apiInstance = new ServicePortalApi.AdminsApi();
+let id = "id_example"; // String | ID of the resource
+let portfolio = new ServicePortalApi.Portfolio(); // Portfolio | 
+apiInstance.updatePortfolio(id, portfolio).then((data) => {
+  console.log('API called successfully. Returned data: ' + data);
+}, (error) => {
+  console.error(error);
+});
+
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| ID of the resource | 
+ **portfolio** | [**Portfolio**](Portfolio.md)|  | 
+
+### Return type
+
+[**Portfolio**](Portfolio.md)
+
+### Authorization
+
+[APIKeyAuth](../README.md#APIKeyAuth), [BasicAuth](../README.md#BasicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 

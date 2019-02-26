@@ -104,8 +104,9 @@ OrderItem.prototype['id'] = undefined;
 
 /**
  * @member {Number} count
+ * @default 1
  */
-OrderItem.prototype['count'] = undefined;
+OrderItem.prototype['count'] = 1;
 
 /**
  * @member {Object} service_parameters

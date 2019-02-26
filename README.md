@@ -82,9 +82,10 @@ BasicAuth.username = 'YOUR USERNAME'
 BasicAuth.password = 'YOUR PASSWORD'
 
 var api = new ServicePortalApi.AdminsApi()
-var portfolio = new ServicePortalApi.Portfolio(); // {Portfolio} 
-api.addPortfolio(portfolio).then(function(data) {
-  console.log('API called successfully. Returned data: ' + data);
+var portfolioId = "portfolioId_example"; // {String} The Portfolio ID
+var addPortfolioItem = new ServicePortalApi.AddPortfolioItem(); // {AddPortfolioItem} 
+api.addPortfolioItemToPortfolio(portfolioId, addPortfolioItem).then(function() {
+  console.log('API called successfully.');
 }, function(error) {
   console.error(error);
 });
@@ -98,38 +99,38 @@ All URIs are relative to *https://localhost/r/insights/platform/service-portal*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ServicePortalApi.AdminsApi* | [**addPortfolio**](docs/AdminsApi.md#addPortfolio) | **POST** /portfolios | API to add a new portfolio
-*ServicePortalApi.AdminsApi* | [**addPortfolioItem**](docs/AdminsApi.md#addPortfolioItem) | **POST** /portfolio_items | API to add a new portfolio item
 *ServicePortalApi.AdminsApi* | [**addPortfolioItemToPortfolio**](docs/AdminsApi.md#addPortfolioItemToPortfolio) | **POST** /portfolios/{portfolio_id}/portfolio_items | Add Portfolio item to a portfolio
-*ServicePortalApi.AdminsApi* | [**addToOrder**](docs/AdminsApi.md#addToOrder) | **POST** /orders/{order_id}/items | Add an Order Item to the Order in Pending State
-*ServicePortalApi.AdminsApi* | [**destroyPortfolio**](docs/AdminsApi.md#destroyPortfolio) | **DELETE** /portfolios/{portfolio_id} | Delete an existing portfolio
-*ServicePortalApi.AdminsApi* | [**destroyPortfolioItem**](docs/AdminsApi.md#destroyPortfolioItem) | **DELETE** /portfolio_items/{portfolio_item_id} | Delete an existing portfolio item
-*ServicePortalApi.AdminsApi* | [**editPortfolio**](docs/AdminsApi.md#editPortfolio) | **PATCH** /portfolios/{portfolio_id} | Edit an existing portfolio
-*ServicePortalApi.AdminsApi* | [**fetchPlansWithPortfolioItemId**](docs/AdminsApi.md#fetchPlansWithPortfolioItemId) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
-*ServicePortalApi.AdminsApi* | [**fetchPortfolioItemWithId**](docs/AdminsApi.md#fetchPortfolioItemWithId) | **GET** /portfolio_items/{portfolio_item_id} | Fetch a specific Portfolio Item
+*ServicePortalApi.AdminsApi* | [**addToOrder**](docs/AdminsApi.md#addToOrder) | **POST** /orders/{order_id}/order_items | Add an Order Item to the Order in Pending State
+*ServicePortalApi.AdminsApi* | [**createOrder**](docs/AdminsApi.md#createOrder) | **POST** /orders | Create a new order
+*ServicePortalApi.AdminsApi* | [**createPortfolio**](docs/AdminsApi.md#createPortfolio) | **POST** /portfolios | API to add a new portfolio
+*ServicePortalApi.AdminsApi* | [**createPortfolioItem**](docs/AdminsApi.md#createPortfolioItem) | **POST** /portfolio_items | API to add a new portfolio item
+*ServicePortalApi.AdminsApi* | [**destroyPortfolio**](docs/AdminsApi.md#destroyPortfolio) | **DELETE** /portfolios/{id} | Delete an existing portfolio
+*ServicePortalApi.AdminsApi* | [**destroyPortfolioItem**](docs/AdminsApi.md#destroyPortfolioItem) | **DELETE** /portfolio_items/{id} | Delete an existing portfolio item
 *ServicePortalApi.AdminsApi* | [**fetchPortfolioItemsWithPortfolio**](docs/AdminsApi.md#fetchPortfolioItemsWithPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items | Fetch all portfolio items from a specific portfolio
-*ServicePortalApi.AdminsApi* | [**fetchPortfolioWithId**](docs/AdminsApi.md#fetchPortfolioWithId) | **GET** /portfolios/{portfolio_id} | Fetch a specific Portfolio
-*ServicePortalApi.AdminsApi* | [**fetchProviderControlParameters**](docs/AdminsApi.md#fetchProviderControlParameters) | **GET** /portfolio_items/{portfolio_item_id}/provider_control_parameters | Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
-*ServicePortalApi.AdminsApi* | [**listOrderItem**](docs/AdminsApi.md#listOrderItem) | **GET** /orders/{order_id}/items/{order_item_id} | Get an individual order item from a given order
-*ServicePortalApi.AdminsApi* | [**listOrderItems**](docs/AdminsApi.md#listOrderItems) | **GET** /orders/{order_id}/items | Get a list of items in a given order
+*ServicePortalApi.AdminsApi* | [**listOrderItems**](docs/AdminsApi.md#listOrderItems) | **GET** /orders/{order_id}/order_items | Get a list of items in a given order
 *ServicePortalApi.AdminsApi* | [**listOrders**](docs/AdminsApi.md#listOrders) | **GET** /orders | Get a list of orders
 *ServicePortalApi.AdminsApi* | [**listPortfolioItems**](docs/AdminsApi.md#listPortfolioItems) | **GET** /portfolio_items | API to list all portfolio items
 *ServicePortalApi.AdminsApi* | [**listPortfolios**](docs/AdminsApi.md#listPortfolios) | **GET** /portfolios | API to list portfolios
 *ServicePortalApi.AdminsApi* | [**listProgressMessages**](docs/AdminsApi.md#listProgressMessages) | **GET** /order_items/{order_item_id}/progress_messages | Get a list of progress messages in an item
-*ServicePortalApi.AdminsApi* | [**newOrder**](docs/AdminsApi.md#newOrder) | **POST** /orders | Create a new order
-*ServicePortalApi.AdminsApi* | [**submitOrder**](docs/AdminsApi.md#submitOrder) | **POST** /orders/{order_id} | Submit the given order
-*ServicePortalApi.UsersApi* | [**addToOrder**](docs/UsersApi.md#addToOrder) | **POST** /orders/{order_id}/items | Add an Order Item to the Order in Pending State
-*ServicePortalApi.UsersApi* | [**fetchPlansWithPortfolioItemId**](docs/UsersApi.md#fetchPlansWithPortfolioItemId) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
-*ServicePortalApi.UsersApi* | [**fetchPortfolioItemWithId**](docs/UsersApi.md#fetchPortfolioItemWithId) | **GET** /portfolio_items/{portfolio_item_id} | Fetch a specific Portfolio Item
+*ServicePortalApi.AdminsApi* | [**listProviderControlParameters**](docs/AdminsApi.md#listProviderControlParameters) | **GET** /portfolio_items/{portfolio_item_id}/provider_control_parameters | Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
+*ServicePortalApi.AdminsApi* | [**listServicePlans**](docs/AdminsApi.md#listServicePlans) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
+*ServicePortalApi.AdminsApi* | [**showOrderItem**](docs/AdminsApi.md#showOrderItem) | **GET** /orders/{order_id}/order_items/{id} | Get an individual order item from a given order
+*ServicePortalApi.AdminsApi* | [**showPortfolio**](docs/AdminsApi.md#showPortfolio) | **GET** /portfolios/{id} | Fetch a specific Portfolio
+*ServicePortalApi.AdminsApi* | [**showPortfolioItem**](docs/AdminsApi.md#showPortfolioItem) | **GET** /portfolio_items/{id} | Fetch a specific Portfolio Item
+*ServicePortalApi.AdminsApi* | [**submitOrder**](docs/AdminsApi.md#submitOrder) | **POST** /orders/{order_id}/submit_order | Submit the given order
+*ServicePortalApi.AdminsApi* | [**updatePortfolio**](docs/AdminsApi.md#updatePortfolio) | **PATCH** /portfolios/{id} | Edit an existing portfolio
+*ServicePortalApi.UsersApi* | [**addToOrder**](docs/UsersApi.md#addToOrder) | **POST** /orders/{order_id}/order_items | Add an Order Item to the Order in Pending State
 *ServicePortalApi.UsersApi* | [**fetchPortfolioItemsWithPortfolio**](docs/UsersApi.md#fetchPortfolioItemsWithPortfolio) | **GET** /portfolios/{portfolio_id}/portfolio_items | Fetch all portfolio items from a specific portfolio
-*ServicePortalApi.UsersApi* | [**fetchPortfolioWithId**](docs/UsersApi.md#fetchPortfolioWithId) | **GET** /portfolios/{portfolio_id} | Fetch a specific Portfolio
-*ServicePortalApi.UsersApi* | [**fetchProviderControlParameters**](docs/UsersApi.md#fetchProviderControlParameters) | **GET** /portfolio_items/{portfolio_item_id}/provider_control_parameters | Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
-*ServicePortalApi.UsersApi* | [**listOrderItem**](docs/UsersApi.md#listOrderItem) | **GET** /orders/{order_id}/items/{order_item_id} | Get an individual order item from a given order
-*ServicePortalApi.UsersApi* | [**listOrderItems**](docs/UsersApi.md#listOrderItems) | **GET** /orders/{order_id}/items | Get a list of items in a given order
+*ServicePortalApi.UsersApi* | [**listOrderItems**](docs/UsersApi.md#listOrderItems) | **GET** /orders/{order_id}/order_items | Get a list of items in a given order
 *ServicePortalApi.UsersApi* | [**listOrders**](docs/UsersApi.md#listOrders) | **GET** /orders | Get a list of orders
 *ServicePortalApi.UsersApi* | [**listPortfolioItems**](docs/UsersApi.md#listPortfolioItems) | **GET** /portfolio_items | API to list all portfolio items
 *ServicePortalApi.UsersApi* | [**listPortfolios**](docs/UsersApi.md#listPortfolios) | **GET** /portfolios | API to list portfolios
 *ServicePortalApi.UsersApi* | [**listProgressMessages**](docs/UsersApi.md#listProgressMessages) | **GET** /order_items/{order_item_id}/progress_messages | Get a list of progress messages in an item
+*ServicePortalApi.UsersApi* | [**listProviderControlParameters**](docs/UsersApi.md#listProviderControlParameters) | **GET** /portfolio_items/{portfolio_item_id}/provider_control_parameters | Fetches the provider control parameters for this portfolio item, it needs to be provided when provisioning the portfolio item.
+*ServicePortalApi.UsersApi* | [**listServicePlans**](docs/UsersApi.md#listServicePlans) | **GET** /portfolio_items/{portfolio_item_id}/service_plans | Fetches all the service plans for a specific portfolio item, this requires a connection to the topology service.
+*ServicePortalApi.UsersApi* | [**showOrderItem**](docs/UsersApi.md#showOrderItem) | **GET** /orders/{order_id}/order_items/{id} | Get an individual order item from a given order
+*ServicePortalApi.UsersApi* | [**showPortfolio**](docs/UsersApi.md#showPortfolio) | **GET** /portfolios/{id} | Fetch a specific Portfolio
+*ServicePortalApi.UsersApi* | [**showPortfolioItem**](docs/UsersApi.md#showPortfolioItem) | **GET** /portfolio_items/{id} | Fetch a specific Portfolio Item
 
 
 ## Documentation for Models
