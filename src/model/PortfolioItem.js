@@ -65,6 +65,21 @@ class PortfolioItem {
             if (data.hasOwnProperty('state')) {
                 obj['state'] = ApiClient.convertToType(data['state'], 'String');
             }
+            if (data.hasOwnProperty('display_name')) {
+                obj['display_name'] = ApiClient.convertToType(data['display_name'], 'String');
+            }
+            if (data.hasOwnProperty('long_description')) {
+                obj['long_description'] = ApiClient.convertToType(data['long_description'], 'String');
+            }
+            if (data.hasOwnProperty('distributor')) {
+                obj['distributor'] = ApiClient.convertToType(data['distributor'], 'String');
+            }
+            if (data.hasOwnProperty('documentation_url')) {
+                obj['documentation_url'] = ApiClient.convertToType(data['documentation_url'], 'String');
+            }
+            if (data.hasOwnProperty('support_url')) {
+                obj['support_url'] = ApiClient.convertToType(data['support_url'], 'String');
+            }
         }
         return obj;
     }
@@ -101,6 +116,31 @@ PortfolioItem.prototype['orphan'] = undefined;
  * @member {String} state
  */
 PortfolioItem.prototype['state'] = undefined;
+
+/**
+ * @member {String} display_name
+ */
+PortfolioItem.prototype['display_name'] = undefined;
+
+/**
+ * @member {String} long_description
+ */
+PortfolioItem.prototype['long_description'] = undefined;
+
+/**
+ * @member {String} distributor
+ */
+PortfolioItem.prototype['distributor'] = undefined;
+
+/**
+ * @member {String} documentation_url
+ */
+PortfolioItem.prototype['documentation_url'] = undefined;
+
+/**
+ * @member {String} support_url
+ */
+PortfolioItem.prototype['support_url'] = undefined;
 
 
 

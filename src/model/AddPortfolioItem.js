@@ -47,8 +47,8 @@ class AddPortfolioItem {
         if (data) {
             obj = obj || new AddPortfolioItem();
 
-            if (data.hasOwnProperty('portfolio_id')) {
-                obj['portfolio_id'] = ApiClient.convertToType(data['portfolio_id'], 'String');
+            if (data.hasOwnProperty('portfolio_item_id')) {
+                obj['portfolio_item_id'] = ApiClient.convertToType(data['portfolio_item_id'], 'String');
             }
         }
         return obj;
@@ -59,9 +59,9 @@ class AddPortfolioItem {
 
 /**
  * This is the id of the portfolio item object
- * @member {String} portfolio_id
+ * @member {String} portfolio_item_id
  */
-AddPortfolioItem.prototype['portfolio_id'] = undefined;
+AddPortfolioItem.prototype['portfolio_item_id'] = undefined;
 
 
 

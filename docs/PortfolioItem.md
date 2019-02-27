@@ -9,5 +9,10 @@ Name | Type | Description | Notes
 **description** | **String** |  | [optional] 
 **orphan** | **Boolean** |  | [optional] 
 **state** | **String** |  | [optional] 
+**displayName** | **String** |  | [optional] 
+**longDescription** | **String** |  | [optional] 
+**distributor** | **String** |  | [optional] 
+**documentationUrl** | **String** |  | [optional] 
+**supportUrl** | **String** |  | [optional] 
 
 
