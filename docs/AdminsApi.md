@@ -1,6 +1,6 @@
-# ServicePortalApi.AdminsApi
+# CatalogApi.AdminsApi
 
-All URIs are relative to *https://localhost/r/insights/platform/service-portal*
+All URIs are relative to *https://localhost/r/insights/platform/catalog*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -36,8 +36,8 @@ Add new portfolio item to an existing portfolio
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -50,9 +50,9 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let portfolioId = "portfolioId_example"; // String | The Portfolio ID
-let addPortfolioItem = new ServicePortalApi.AddPortfolioItem(); // AddPortfolioItem | 
+let addPortfolioItem = new CatalogApi.AddPortfolioItem(); // AddPortfolioItem | 
 apiInstance.addPortfolioItemToPortfolio(portfolioId, addPortfolioItem).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -91,8 +91,8 @@ Add an order item to the order in Pending State
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -105,9 +105,9 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let orderId = "orderId_example"; // String | The Order ID
-let orderItem = new ServicePortalApi.OrderItem(); // OrderItem | 
+let orderItem = new CatalogApi.OrderItem(); // OrderItem | 
 apiInstance.addToOrder(orderId, orderItem).then(() => {
   console.log('API called successfully.');
 }, (error) => {
@@ -146,8 +146,8 @@ Create a new order.
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -160,7 +160,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 apiInstance.createOrder().then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -195,8 +195,8 @@ Returns the added portfolio object
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -209,8 +209,8 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
-let portfolio = new ServicePortalApi.Portfolio(); // Portfolio | 
+let apiInstance = new CatalogApi.AdminsApi();
+let portfolio = new CatalogApi.Portfolio(); // Portfolio | 
 apiInstance.createPortfolio(portfolio).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -248,8 +248,8 @@ This API would connect to the Topology Service to fetch the name and description
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -262,8 +262,8 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
-let createPortfolioItem = new ServicePortalApi.CreatePortfolioItem(); // CreatePortfolioItem | 
+let apiInstance = new CatalogApi.AdminsApi();
+let createPortfolioItem = new CatalogApi.CreatePortfolioItem(); // CreatePortfolioItem | 
 apiInstance.createPortfolioItem(createPortfolioItem).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {
@@ -301,8 +301,8 @@ Deletes the portfolio id passed in as the param.
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -315,7 +315,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let id = "id_example"; // String | ID of the resource
 apiInstance.destroyPortfolio(id).then(() => {
   console.log('API called successfully.');
@@ -354,8 +354,8 @@ Deletes the portfolio item id passed in as the param.
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -368,7 +368,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let id = "id_example"; // String | ID of the resource
 apiInstance.destroyPortfolioItem(id).then(() => {
   console.log('API called successfully.');
@@ -407,8 +407,8 @@ By passing in the portfolio id you can fetch all the portfolio items in the port
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -421,7 +421,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let portfolioId = "portfolioId_example"; // String | The Portfolio ID
 let opts = {
   'limit': 100, // Number | The numbers of items to return per page.
@@ -466,8 +466,8 @@ Get a list of items associated with an order.
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -480,7 +480,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let orderId = "orderId_example"; // String | The Order ID
 let opts = {
   'limit': 100, // Number | The numbers of items to return per page.
@@ -525,8 +525,8 @@ Get a list of orders associated with the logged in user.
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -539,7 +539,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let opts = {
   'limit': 100, // Number | The numbers of items to return per page.
   'offset': 0 // Number | The number of items to skip before starting to collect the result set.
@@ -582,8 +582,8 @@ Returns a PortfolioItemsCollection object with an embedded array of portfolio it
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -596,7 +596,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let opts = {
   'limit': 100, // Number | The numbers of items to return per page.
   'offset': 0 // Number | The number of items to skip before starting to collect the result set.
@@ -639,8 +639,8 @@ Returns a PortfoliosCollection object with an embedded array of portfolio object
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -653,7 +653,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let opts = {
   'limit': 100, // Number | The numbers of items to return per page.
   'offset': 0 // Number | The number of items to skip before starting to collect the result set.
@@ -696,8 +696,8 @@ Get a list of progress messages associated with an order item. As the item is be
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -710,7 +710,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let orderItemId = "orderItemId_example"; // String | The Order Item ID
 let opts = {
   'limit': 100, // Number | The numbers of items to return per page.
@@ -755,8 +755,8 @@ Fetch provider control parameters for a portfolio item
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -769,7 +769,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
 apiInstance.listProviderControlParameters(portfolioItemId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -808,8 +808,8 @@ Fetch all service plans for a portfolio item
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -822,7 +822,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let portfolioItemId = "portfolioItemId_example"; // String | The Portfolio Item ID
 apiInstance.listServicePlans(portfolioItemId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -861,8 +861,8 @@ Get an order item associated with an order.
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -875,7 +875,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let orderId = "orderId_example"; // String | The Order ID
 let id = "id_example"; // String | ID of the resource
 apiInstance.showOrderItem(orderId, id).then((data) => {
@@ -916,8 +916,8 @@ By passing in the portfolio id you can fetch a specific portfolio.
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -930,7 +930,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let id = "id_example"; // String | ID of the resource
 apiInstance.showPortfolio(id).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -969,8 +969,8 @@ By passing in the portfolio_item_id you can fetch a specific portfolio item
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -983,7 +983,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let id = "id_example"; // String | ID of the resource
 apiInstance.showPortfolioItem(id).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1022,8 +1022,8 @@ Returns an updated order object
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -1036,7 +1036,7 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let orderId = "orderId_example"; // String | The Order ID
 apiInstance.submitOrder(orderId).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
@@ -1075,8 +1075,8 @@ Returns the edited portfolio object
 
 ### Example
 ```javascript
-import ServicePortalApi from 'service_portal_api';
-let defaultClient = ServicePortalApi.ApiClient.instance;
+import CatalogApi from 'catalog_api';
+let defaultClient = CatalogApi.ApiClient.instance;
 
 // Configure API key authorization: APIKeyAuth
 let APIKeyAuth = defaultClient.authentications['APIKeyAuth'];
@@ -1089,9 +1089,9 @@ let BasicAuth = defaultClient.authentications['BasicAuth'];
 BasicAuth.username = 'YOUR USERNAME';
 BasicAuth.password = 'YOUR PASSWORD';
 
-let apiInstance = new ServicePortalApi.AdminsApi();
+let apiInstance = new CatalogApi.AdminsApi();
 let id = "id_example"; // String | ID of the resource
-let portfolio = new ServicePortalApi.Portfolio(); // Portfolio | 
+let portfolio = new CatalogApi.Portfolio(); // Portfolio | 
 apiInstance.updatePortfolio(id, portfolio).then((data) => {
   console.log('API called successfully. Returned data: ' + data);
 }, (error) => {

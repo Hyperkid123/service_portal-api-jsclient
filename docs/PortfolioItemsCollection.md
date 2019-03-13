@@ -1,4 +1,4 @@
-# ServicePortalApi.PortfolioItemsCollection
+# CatalogApi.PortfolioItemsCollection
 
 ## Properties
 Name | Type | Description | Notes

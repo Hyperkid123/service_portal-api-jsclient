@@ -1,4 +1,4 @@
-# ServicePortalApi.Portfolio
+# CatalogApi.Portfolio
 
 ## Properties
 Name | Type | Description | Notes
@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **description** | **String** |  | 
 **enabled** | **Boolean** |  | [optional] [default to false]
 **imageUrl** | **String** |  | [optional] 
+**workflowRef** | **String** |  | [optional] 
 
 

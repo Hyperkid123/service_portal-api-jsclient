@@ -1,4 +1,4 @@
-# ServicePortalApi.OrdersCollection
+# CatalogApi.OrdersCollection
 
 ## Properties
 Name | Type | Description | Notes

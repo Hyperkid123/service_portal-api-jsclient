@@ -1,5 +1,5 @@
 /**
- * Service Portal API
+ * Catalog API
  * This is a API to fetch and order catalog items from different cloud sources
  *
  * OpenAPI spec version: 0.1.0
@@ -32,9 +32,9 @@ class ApiClient {
         /**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
-         * @default https://localhost/r/insights/platform/service-portal
+         * @default https://localhost/r/insights/platform/catalog
          */
-        this.basePath = 'https://localhost/r/insights/platform/service-portal'.replace(/\/+$/, '');
+        this.basePath = 'https://localhost/r/insights/platform/catalog'.replace(/\/+$/, '');
 
         /**
          * The authentication methods to be included for all API calls.

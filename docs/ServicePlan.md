@@ -1,4 +1,4 @@
-# ServicePortalApi.ServicePlan
+# CatalogApi.ServicePlan
 
 ## Properties
 Name | Type | Description | Notes

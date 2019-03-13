@@ -3,7 +3,7 @@
   "info": {
     "description": "This is a API to fetch and order catalog items from different cloud sources",
     "version": "0.1.0",
-    "title": "Service Portal API",
+    "title": "Catalog API",
     "contact": {
       "email": "support@redhat.com"
     },
@@ -194,6 +194,9 @@
           },
           "404": {
             "description": "Portfolio Not Found"
+          },
+          "422": {
+            "description": "Failed to discard child Portfolio Items"
           }
         }
       }
@@ -411,6 +414,37 @@
           },
           "404": {
             "description": "Portfolio Item not Found"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Edit an existing Portfolio Item",
+        "description": "Returns the edited Portfolio Item Object",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/ID"
+          }
+        ],
+        "operationId": "updatePortfolioItem",
+        "responses": {
+          "200": {
+            "description": "Return the updated Portfolio Item object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PortfolioItem"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          },
+          "403": {
+            "$ref": "#/components/responses/Forbidden"
+          },
+          "404": {
+            "description": "The Portfolio Item ID was not found"
           }
         }
       }
@@ -761,10 +795,10 @@
   },
   "servers": [
     {
-      "url": "https://localhost/r/insights/platform/service-portal"
+      "url": "https://localhost/r/insights/platform/catalog"
     },
     {
-      "url": "http://localhost/r/insights/platform/service-portal"
+      "url": "http://localhost/r/insights/platform/catalog"
     }
   ],
   "components": {
@@ -907,6 +941,11 @@
             "title": "Image URL",
             "format": "url",
             "example": "The public facing image url for a portfolio"
+          },
+          "workflow_ref": {
+            "type": "string",
+            "title": "Approval Workflow ID",
+            "example": "The current approval workflow selected for a portfolio"
           }
         }
       },

@@ -1,4 +1,4 @@
-# ServicePortalApi.AddPortfolioItem
+# CatalogApi.AddPortfolioItem
 
 ## Properties
 Name | Type | Description | Notes

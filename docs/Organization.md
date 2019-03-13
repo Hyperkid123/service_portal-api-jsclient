@@ -1,4 +1,4 @@
-# ServicePortalApi.Organization
+# CatalogApi.Organization
 
 ## Properties
 Name | Type | Description | Notes

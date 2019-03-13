@@ -1,5 +1,5 @@
 /**
- * Service Portal API
+ * Catalog API
  * This is a API to fetch and order catalog items from different cloud sources
  *
  * OpenAPI spec version: 0.1.0
@@ -66,6 +66,9 @@ class Portfolio {
             if (data.hasOwnProperty('image_url')) {
                 obj['image_url'] = ApiClient.convertToType(data['image_url'], 'String');
             }
+            if (data.hasOwnProperty('workflow_ref')) {
+                obj['workflow_ref'] = ApiClient.convertToType(data['workflow_ref'], 'String');
+            }
         }
         return obj;
     }
@@ -98,6 +101,11 @@ Portfolio.prototype['enabled'] = false;
  * @member {String} image_url
  */
 Portfolio.prototype['image_url'] = undefined;
+
+/**
+ * @member {String} workflow_ref
+ */
+Portfolio.prototype['workflow_ref'] = undefined;
 
 
 

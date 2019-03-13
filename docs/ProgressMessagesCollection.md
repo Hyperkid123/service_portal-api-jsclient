@@ -1,4 +1,4 @@
-# ServicePortalApi.ProgressMessagesCollection
+# CatalogApi.ProgressMessagesCollection
 
 ## Properties
 Name | Type | Description | Notes

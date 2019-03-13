@@ -1,4 +1,4 @@
-# ServicePortalApi.CollectionLinks
+# CatalogApi.CollectionLinks
 
 ## Properties
 Name | Type | Description | Notes

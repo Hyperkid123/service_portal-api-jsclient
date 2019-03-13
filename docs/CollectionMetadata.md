@@ -1,4 +1,4 @@
-# ServicePortalApi.CollectionMetadata
+# CatalogApi.CollectionMetadata
 
 ## Properties
 Name | Type | Description | Notes
